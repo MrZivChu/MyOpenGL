@@ -1,0 +1,9 @@
+﻿  Building Custom Rule G:/OpenGL/glfw-3.3/examples/CMakeLists.txt
+  CMake does not need to re-run because G:/OpenGL/build/examples/CMakeFiles/generate.stamp is up-to-date.
+  particles.c
+  tinycthread.c
+  getopt.c
+  glad_gl.c
+  正在生成代码...
+  particles.vcxproj -> G:\OpenGL\build\examples\Debug\particles.exe
+  particles.vcxproj -> G:/OpenGL/build/examples/Debug/particles.pdb (Full PDB)

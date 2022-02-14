@@ -1,0 +1,5 @@
+﻿  CPack: Create package using ZIP
+  CPack: Install projects
+  CPack: - Install project: freetype
+  CPack: Create package
+  CPack: - package: E:/OpenGL/freetype-2.10.4/build/freetype-2.10.4-win32.zip generated.

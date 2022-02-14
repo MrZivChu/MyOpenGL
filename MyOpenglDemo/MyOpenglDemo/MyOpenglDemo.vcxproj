@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2C659FD0-7A7A-41CA-BB31-DD083A4D9D5D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>MyOpenglDemo</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\glm-0.9.8.5\glm;..\..\glad\include;..\..\glfw-3.3\include;..\..\assimp-3.1.1_no_test_models\assimp-3.1.1\include;..\..\glew-2.1.0-win32\glew-2.1.0\include;..\..\soil-master\inc\SOIL;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\include;..\..\freetype-2.10.4\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\build\src\Debug;..\..\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;..\..\soil-master\build\Debug;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\lib\Win32-visualStudio;..\..\freetype-2.10.4\build\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\glm-0.9.8.5\glm;..\..\glad\include;..\..\glfw-3.3\include;..\..\assimp-3.1.1_no_test_models\assimp-3.1.1\include;..\..\glew-2.1.0-win32\glew-2.1.0\include;..\..\soil-master\inc\SOIL;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\include;..\..\freetype-2.10.4\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\build\src\Debug;..\..\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;..\..\soil-master\build\Debug;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\lib\Win32-visualStudio;..\..\freetype-2.10.4\build\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glew32s.lib;soil.lib;irrKlang.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glew32s.lib;soil.lib;irrKlang.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="OpenGL\ball_object.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="OpenGL\game_level.cpp" />
+    <ClCompile Include="OpenGL\game_object.cpp" />
+    <ClCompile Include="Game\main.cpp" />
+    <ClCompile Include="OpenGL\particle_generator.cpp" />
+    <ClCompile Include="OpenGL\post_processor.cpp" />
+    <ClCompile Include="OpenGL\resource_manager.cpp" />
+    <ClCompile Include="OpenGL\shader.cpp" />
+    <ClCompile Include="OpenGL\sprite_renderer.cpp" />
+    <ClCompile Include="OpenGL\texture.cpp" />
+    <ClCompile Include="OpenGL\text_renderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OpenGL\ball_object.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="OpenGL\game_level.h" />
+    <ClInclude Include="OpenGL\game_object.h" />
+    <ClInclude Include="OpenGL\particle_generator.h" />
+    <ClInclude Include="OpenGL\post_processor.h" />
+    <ClInclude Include="OpenGL\power_up.h" />
+    <ClInclude Include="OpenGL\resource_manager.h" />
+    <ClInclude Include="OpenGL\shader.h" />
+    <ClInclude Include="OpenGL\sprite_renderer.h" />
+    <ClInclude Include="OpenGL\texture.h" />
+    <ClInclude Include="OpenGL\text_renderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\awesomeface.png" />
+    <Image Include="textures\background.jpg" />
+    <Image Include="textures\block.png" />
+    <Image Include="textures\block_solid.png" />
+    <Image Include="textures\paddle.png" />
+    <Image Include="textures\particle.png" />
+    <Image Include="textures\powerup_chaos.png" />
+    <Image Include="textures\powerup_confuse.png" />
+    <Image Include="textures\powerup_increase.png" />
+    <Image Include="textures\powerup_passthrough.png" />
+    <Image Include="textures\powerup_speed.png" />
+    <Image Include="textures\powerup_sticky.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ikpFlac.dll" />
+    <None Include="ikpMP3.dll" />
+    <None Include="irrKlang.dll" />
+    <None Include="levels\four.lvl" />
+    <None Include="levels\one.lvl" />
+    <None Include="levels\three.lvl" />
+    <None Include="levels\two.lvl" />
+    <None Include="shaders\particle.frag" />
+    <None Include="shaders\particle.vs" />
+    <None Include="shaders\post_processing.frag" />
+    <None Include="shaders\post_processing.vs" />
+    <None Include="shaders\sprite.frag" />
+    <None Include="shaders\sprite.vs" />
+    <None Include="shaders\text.frag" />
+    <None Include="shaders\text.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="audio\bleep.mp3" />
+    <Media Include="audio\bleep.wav" />
+    <Media Include="audio\breakout.mp3" />
+    <Media Include="audio\powerup.wav" />
+    <Media Include="audio\solid.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\OCRAEXT.TTF" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

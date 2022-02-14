@@ -1,0 +1,7 @@
+﻿  Building Custom Rule G:/OpenGL/glfw-3.3/examples/CMakeLists.txt
+  CMake does not need to re-run because G:/OpenGL/build/examples/CMakeFiles/generate.stamp is up-to-date.
+  heightmap.c
+  glad_gl.c
+  正在生成代码...
+  heightmap.vcxproj -> G:\OpenGL\build\examples\Debug\heightmap.exe
+  heightmap.vcxproj -> G:/OpenGL/build/examples/Debug/heightmap.pdb (Full PDB)

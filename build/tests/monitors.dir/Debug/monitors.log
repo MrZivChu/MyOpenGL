@@ -1,0 +1,8 @@
+﻿  Building Custom Rule G:/OpenGL/glfw-3.3/tests/CMakeLists.txt
+  CMake does not need to re-run because G:/OpenGL/build/tests/CMakeFiles/generate.stamp is up-to-date.
+  monitors.c
+  getopt.c
+  glad_gl.c
+  正在生成代码...
+  monitors.vcxproj -> G:\OpenGL\build\tests\Debug\monitors.exe
+  monitors.vcxproj -> G:/OpenGL/build/tests/Debug/monitors.pdb (Full PDB)

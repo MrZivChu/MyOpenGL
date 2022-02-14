@@ -1,0 +1,56 @@
+﻿  Building Custom Rule E:/OpenGL/freetype-2.10.4/CMakeLists.txt
+  CMake does not need to re-run because E:/OpenGL/freetype-2.10.4/build/CMakeFiles/generate.stamp is up-to-date.
+  autofit.c
+e:\opengl\freetype-2.10.4\src\autofit\afscript.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\opengl\freetype-2.10.4\src\autofit\afblue.c : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\opengl\freetype-2.10.4\src\autofit\afblue.c(255): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\opengl\freetype-2.10.4\src\autofit\afscript.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\opengl\freetype-2.10.4\src\autofit\afscript.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\opengl\freetype-2.10.4\src\autofit\afscript.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\opengl\freetype-2.10.4\src\autofit\afscript.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\opengl\freetype-2.10.4\src\autofit\afscript.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  ftbase.c
+  ftbbox.c
+  ftbdf.c
+  ftbitmap.c
+  ftcid.c
+  ftfstype.c
+  ftgasp.c
+  ftglyph.c
+  ftgxval.c
+  ftinit.c
+  ftmm.c
+  ftotval.c
+  ftpatent.c
+  ftpfr.c
+  ftstroke.c
+  ftsynth.c
+  fttype1.c
+  ftwinfnt.c
+  bdf.c
+  正在生成代码...
+  正在编译...
+  ftbzip2.c
+  ftcache.c
+  cff.c
+  type1cid.c
+  ftgzip.c
+  ftlzw.c
+  pcf.c
+  pfr.c
+  psaux.c
+  pshinter.c
+  psnames.c
+  raster.c
+  sfnt.c
+e:\opengl\freetype-2.10.4\src\sfnt\ttload.c : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  smooth.c
+  truetype.c
+e:\opengl\freetype-2.10.4\src\truetype\ttobjs.c(980): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  type1.c
+  type42.c
+  winfnt.c
+  ftsystem.c
+  ftdebug.c
+  正在生成代码...
+  freetype.vcxproj -> E:\OpenGL\freetype-2.10.4\build\Debug\freetyped.lib

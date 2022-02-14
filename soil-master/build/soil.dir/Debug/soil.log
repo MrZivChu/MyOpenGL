@@ -1,0 +1,45 @@
+﻿  Building Custom Rule E:/OpenGL/soil-master/CMakeLists.txt
+  CMake does not need to re-run because E:/OpenGL/soil-master/build/CMakeFiles/generate.stamp is up-to-date.
+  image_helper.c
+E:\OpenGL\soil-master\src\image_helper.c(325): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\OpenGL\soil-master\src\image_helper.c(366): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenGL\soil-master\src\image_helper.c(373): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+E:\OpenGL\soil-master\src\image_helper.c(415): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\OpenGL\soil-master\src\image_helper.c(422): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+  stb_image_aug.c
+E:\OpenGL\soil-master\src\stb_image_aug.c(126): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(200): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(252): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(1506): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(2343): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(2658): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(2944): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(3158): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(3497): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\src\stb_image_aug.c(3593): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+E:\OpenGL\soil-master\inc\SOIL/stbi_DDS_aug_c.h(362): warning C4018: “>”: 有符号/无符号不匹配
+E:\OpenGL\soil-master\inc\SOIL/stbi_DDS_aug_c.h(366): warning C4018: “>”: 有符号/无符号不匹配
+E:\OpenGL\soil-master\inc\SOIL/stbi_DDS_aug_c.h(390): warning C4018: “<”: 有符号/无符号不匹配
+E:\OpenGL\soil-master\inc\SOIL/stbi_DDS_aug_c.h(427): warning C4018: “<”: 有符号/无符号不匹配
+E:\OpenGL\soil-master\inc\SOIL/stbi_DDS_aug_c.h(498): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+  image_DXT.c
+E:\OpenGL\soil-master\src\image_DXT.c(92): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+  SOIL.c
+E:\OpenGL\soil-master\src\SOIL.c(1719): warning C4018: “<=”: 有符号/无符号不匹配
+E:\OpenGL\soil-master\src\SOIL.c(1729): warning C4018: “<”: 有符号/无符号不匹配
+E:\OpenGL\soil-master\src\SOIL.c(1841): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+  正在生成代码...
+  soil.vcxproj -> E:\OpenGL\soil-master\build\Debug\soil.lib

@@ -1,0 +1,7 @@
+﻿  Building Custom Rule G:/OpenGL/glfw-3.3/tests/CMakeLists.txt
+  CMake does not need to re-run because G:/OpenGL/build/tests/CMakeFiles/generate.stamp is up-to-date.
+  gamma.c
+  glad_gl.c
+  正在生成代码...
+  gamma.vcxproj -> G:\OpenGL\build\tests\Debug\gamma.exe
+  gamma.vcxproj -> G:/OpenGL/build/tests/Debug/gamma.pdb (Full PDB)
