@@ -8,7 +8,7 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
-#include "resource_manager.h"
+#include "ResourceManager.h"
 
 #include <iostream>
 #include <sstream>

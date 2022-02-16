@@ -14,8 +14,8 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-#include "text_renderer.h"
-#include "resource_manager.h"
+#include "TextRenderer.h"
+#include "ResourceManager.h"
 
 
 TextRenderer::TextRenderer(GLuint width, GLuint height)

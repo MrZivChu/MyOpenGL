@@ -12,9 +12,9 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
-#include "texture.h"
-#include "sprite_renderer.h"
-#include "shader.h"
+#include "Texture.h"
+#include "SpriteRenderer.h"
+#include "Shader.h"
 
 
 // PostProcessor hosts all PostProcessing effects for the Breakout

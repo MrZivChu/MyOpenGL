@@ -15,13 +15,13 @@
 using namespace irrklang;
 
 #include "game.h"
-#include "../OpenGL/resource_manager.h"
-#include "../OpenGL/sprite_renderer.h"
-#include "../OpenGL/game_object.h"
-#include "../OpenGL/ball_object.h"
-#include "../OpenGL/particle_generator.h"
-#include "../OpenGL/post_processor.h"
-#include "../OpenGL/text_renderer.h"
+#include "../OpenGL/ResourceManager.h"
+#include "../OpenGL/SpriteRenderer.h"
+#include "../OpenGL/ParticleGenerator.h"
+#include "../OpenGL/PostProcessor.h"
+#include "../OpenGL/TextRenderer.h"
+#include "GameObject.h"
+#include "BallObject.h"
 
 
 // Game-related State data

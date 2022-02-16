@@ -12,8 +12,8 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
-#include "texture.h"
-#include "power_up.h"
+#include "../OpenGl/Texture.h"
+#include "PowerUp.h"
 
 
 // BallObject holds the state of the Ball object inheriting

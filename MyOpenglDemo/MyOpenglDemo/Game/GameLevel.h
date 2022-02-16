@@ -13,9 +13,9 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
-#include "game_object.h"
-#include "sprite_renderer.h"
-#include "resource_manager.h"
+#include "GameObject.h"
+#include "../OpenGL/SpriteRenderer.h"
+#include "../OpenGL/ResourceManager.h"
 
 
 /// GameLevel holds all Tiles as part of a Breakout level and 

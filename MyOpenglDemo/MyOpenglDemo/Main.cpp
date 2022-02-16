@@ -10,8 +10,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "game.h"
-#include "../OpenGL/resource_manager.h"
+#include "Game/game.h"
+#include "OpenGL/ResourceManager.h"
 
 
 // GLFW function declerations

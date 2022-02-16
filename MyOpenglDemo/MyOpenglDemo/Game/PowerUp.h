@@ -13,7 +13,7 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
-#include "game_object.h"
+#include "GameObject.h"
 
 
 // The size of a PowerUp block

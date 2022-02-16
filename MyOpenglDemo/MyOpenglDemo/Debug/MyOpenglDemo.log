@@ -1,1 +1,117 @@
-﻿  MyOpenglDemo.vcxproj -> E:\MyOpenGL\MyOpenglDemo\Debug\MyOpenglDemo.exe
+﻿  Main.cpp
+e:\myopengl\myopengldemo\myopengldemo\main.cpp(63): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+  BallObject.cpp
+  Game.cpp
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(88): warning C4244: “参数”: 从“double”转换到“GLuint”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(90): warning C4244: “参数”: 从“double”转换到“GLuint”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(92): warning C4244: “参数”: 从“double”转换到“GLuint”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(94): warning C4244: “参数”: 从“double”转换到“GLuint”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(231): warning C4244: “参数”: 从“double”转换到“GLfloat”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(238): warning C4244: “参数”: 从“GLuint”转换到“GLfloat”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(244): warning C4244: “参数”: 从“GLuint”转换到“GLfloat”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(251): warning C4244: “参数”: 从“float”转换到“GLuint”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(253): warning C4244: “参数”: 从“float”转换到“GLuint”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(255): warning C4244: “参数”: 从“float”转换到“GLuint”，可能丢失数据
+e:\myopengl\myopengldemo\myopengldemo\game\game.cpp(257): warning C4244: “参数”: 从“float”转换到“GLuint”，可能丢失数据
+  GameLevel.cpp
+e:\myopengl\myopengldemo\myopengldemo\game\gamelevel.cpp(60): warning C4244: “初始化”: 从“GLuint”转换到“GLfloat”，可能丢失数据
+  GameObject.cpp
+  ParticleGenerator.cpp
+e:\myopengl\myopengldemo\myopengldemo\opengl\particlegenerator.cpp(33): warning C4244: “-=”: 从“double”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+e:\myopengl\myopengldemo\myopengldemo\opengl\particlegenerator.cpp(115): warning C4244: “初始化”: 从“double”转换到“GLfloat”，可能丢失数据
+  PostProcessor.cpp
+  ResourceManager.cpp
+  Shader.cpp
+  SpriteRenderer.cpp
+  Texture.cpp
+  TextRenderer.cpp
+e:\myopengl\myopengldemo\myopengldemo\opengl\textrenderer.cpp(91): warning C4838: 从“FT_Pos”转换到“GLuint”需要收缩转换
+  正在生成代码...
+LINK : warning LNK4098: 默认库“LIBCMT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+ParticleGenerator.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindBuffer
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindBuffer
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindBuffer
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindBuffer
+ParticleGenerator.obj : warning LNK4049: 已导入本地定义的符号 ___glewBufferData
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewBufferData
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewBufferData
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewBufferData
+ParticleGenerator.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenBuffers
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenBuffers
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenBuffers
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenBuffers
+ParticleGenerator.obj : warning LNK4049: 已导入本地定义的符号 ___glewEnableVertexAttribArray
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewEnableVertexAttribArray
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewEnableVertexAttribArray
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewEnableVertexAttribArray
+ParticleGenerator.obj : warning LNK4049: 已导入本地定义的符号 ___glewVertexAttribPointer
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewVertexAttribPointer
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewVertexAttribPointer
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewVertexAttribPointer
+ParticleGenerator.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindVertexArray
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindVertexArray
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindVertexArray
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindVertexArray
+ParticleGenerator.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenVertexArrays
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenVertexArrays
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenVertexArrays
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenVertexArrays
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewActiveTexture
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewActiveTexture
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewActiveTexture
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetUniformLocation
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetUniformLocation
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniform1fv
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniform1iv
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniform2fv
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindFramebuffer
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewBindRenderbuffer
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewBlitFramebuffer
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewCheckFramebufferStatus
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewFramebufferRenderbuffer
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewFramebufferTexture2D
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenFramebuffers
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewGenRenderbuffers
+PostProcessor.obj : warning LNK4049: 已导入本地定义的符号 ___glewRenderbufferStorageMultisample
+ResourceManager.obj : warning LNK4049: 已导入本地定义的符号 ___glewDeleteProgram
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewAttachShader
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewCompileShader
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewCreateProgram
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewCreateShader
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewDeleteShader
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetProgramInfoLog
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetProgramiv
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetShaderInfoLog
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetShaderiv
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewLinkProgram
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewShaderSource
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniform1f
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniform1i
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniform2f
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniform3f
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniform4f
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewUniformMatrix4fv
+Shader.obj : warning LNK4049: 已导入本地定义的符号 ___glewUseProgram
+SpriteRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewDeleteVertexArrays
+TextRenderer.obj : warning LNK4049: 已导入本地定义的符号 ___glewBufferSubData
+glfw3.lib(context.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(context.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(init.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(init.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(input.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(input.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(monitor.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(monitor.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(vulkan.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(vulkan.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(window.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(window.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_init.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_init.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_joystick.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_joystick.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_monitor.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_monitor.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_time.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_time.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_thread.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_thread.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_window.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_window.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(wgl_context.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(wgl_context.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(egl_context.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(egl_context.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(osmesa_context.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(osmesa_context.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glew32s.lib(glew.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glew32s.lib(glew.obj)”或在“E:\MyOpenGL\MyOpenglDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+  MyOpenglDemo.vcxproj -> E:\MyOpenGL\MyOpenglDemo\Debug\MyOpenglDemo.exe

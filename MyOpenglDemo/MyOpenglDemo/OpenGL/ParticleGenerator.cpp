@@ -6,7 +6,7 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
-#include "particle_generator.h"
+#include "ParticleGenerator.h"
 
 ParticleGenerator::ParticleGenerator(Shader shader, Texture2D texture, GLuint amount)
 	: shader(shader), texture(texture), amount(amount)

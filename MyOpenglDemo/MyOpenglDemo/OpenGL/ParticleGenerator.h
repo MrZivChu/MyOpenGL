@@ -15,7 +15,7 @@
 
 #include "shader.h"
 #include "texture.h"
-#include "game_object.h"
+#include "../Game/GameObject.h"
 
 
 // Represents a single particle and its state

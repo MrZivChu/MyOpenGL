@@ -15,78 +15,78 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OpenGL\game_object.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\ball_object.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\game_level.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\particle_generator.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\post_processor.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\resource_manager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\shader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\sprite_renderer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\text_renderer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGL\texture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Game.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\ResourceManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\Texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\SpriteRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\TextRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\PostProcessor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\ParticleGenerator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameLevel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\BallObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OpenGL\game_object.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\ball_object.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\game_level.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\particle_generator.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\post_processor.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\power_up.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\resource_manager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\shader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\sprite_renderer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\text_renderer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\texture.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Game.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\ResourceManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\Texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\SpriteRenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\TextRenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\PostProcessor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\ParticleGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameLevel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\BallObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\PowerUp.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -16,9 +16,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "../OpenGL/game_object.h"
-#include "../OpenGL/game_level.h"
-#include "../OpenGL/power_up.h"
+#include "GameObject.h"
+#include "GameLevel.h"
+#include "PowerUp.h"
 
 // Represents the current state of the game
 enum GameState {
