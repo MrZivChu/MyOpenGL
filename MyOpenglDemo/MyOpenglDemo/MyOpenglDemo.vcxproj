@@ -148,9 +148,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="OpenGL\Game.cpp" />
+    <ClCompile Include="OpenGL\DisplayManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game\BallObject.cpp" />
-    <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\TTQ.cpp" />
     <ClCompile Include="Game\GameLevel.cpp" />
     <ClCompile Include="Game\GameObject.cpp" />
     <ClCompile Include="OpenGL\ParticleGenerator.cpp" />
@@ -162,8 +164,10 @@
     <ClCompile Include="OpenGL\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OpenGL\Game.h" />
+    <ClInclude Include="OpenGL\DisplayManager.h" />
     <ClInclude Include="Game\BallObject.h" />
-    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\TTQ.h" />
     <ClInclude Include="Game\GameLevel.h" />
     <ClInclude Include="Game\GameObject.h" />
     <ClInclude Include="OpenGL\ParticleGenerator.h" />

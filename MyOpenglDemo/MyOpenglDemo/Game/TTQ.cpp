@@ -14,7 +14,7 @@
 #include <irrKlang.h>
 using namespace irrklang;
 
-#include "game.h"
+#include "TTQ.h"
 #include "../OpenGL/ResourceManager.h"
 #include "../OpenGL/SpriteRenderer.h"
 #include "../OpenGL/ParticleGenerator.h"
