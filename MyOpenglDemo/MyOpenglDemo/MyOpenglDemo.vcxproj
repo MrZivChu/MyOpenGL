@@ -148,7 +148,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OpenGL\Game.cpp" />
     <ClCompile Include="OpenGL\DisplayManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game\BallObject.cpp" />

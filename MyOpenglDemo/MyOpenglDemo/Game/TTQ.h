@@ -19,6 +19,7 @@
 #include "GameObject.h"
 #include "GameLevel.h"
 #include "PowerUp.h"
+#include "../OpenGL/Game.h"
 
 // Represents the current state of the game
 enum GameState {
@@ -46,13 +47,13 @@ const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
 // Radius of the ball object
 const GLfloat BALL_RADIUS = 12.5f;
 
-// Game holds all game-related state and functionality.
+// TTQ holds all game-related state and functionality.
 // Combines all game-related data into a single class for
 // easy access to each of the components and manageability.
-class Game
+class TTQ : public Game
 {
 public:
-	// Game state
+	// TTQ state
 	GameState              State;
 	GLboolean              Keys[1024];
 	GLboolean              KeysProcessed[1024];
@@ -62,14 +63,16 @@ public:
 	GLuint                 Level;
 	GLuint                 Lives;
 	// Constructor/Destructor
-	Game(GLuint width, GLuint height);
-	~Game();
+	TTQ(GLuint width, GLuint height, const char* title);
+	~TTQ();
 	// Initialize game state (load all shaders/textures/levels)
 	void Init();
 	// GameLoop
 	void ProcessInput(GLfloat dt);
 	void Update(GLfloat dt);
+	void ProcessInput(GLFWwindow* window, int key, int scancode, int action, int mode);
 	void Render();
+	void Quit();
 	void DoCollisions();
 	// Reset
 	void ResetLevel();

@@ -12,9 +12,12 @@ public:
 		return  instance;
 	}
 
-	static void CreateWindow(int width, int height, const char* title, GLFWkeyfun cbfun);
-	static void CloseWindow();
+	void CreateWindow(int width, int height, const char* title);
+	void CloseWindow();
+	void RegisterKeyEvent(GLFWkeyfun cbfun);
+	GLFWwindow* GetWindow();
 
-	static GLFWwindow* window;
+private:
+	GLFWwindow* window = nullptr;
 };
 

@@ -1,7 +1,6 @@
 #include "DisplayManager.h"
 
-GLFWwindow* DisplayManager::window = nullptr;
-void DisplayManager::CreateWindow(int width, int height, const char* title, GLFWkeyfun cbfun)
+void DisplayManager::CreateWindow(int width, int height, const char* title)
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -20,14 +19,22 @@ void DisplayManager::CreateWindow(int width, int height, const char* title, GLFW
 	glewInit();
 	glGetError(); // Call it once to catch glewInit() bug, all other errors are now from our application.
 
-	glfwSetKeyCallback(window, cbfun);
-
 	glViewport(0, 0, width, height);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glfwSwapInterval(0);//VSync is off, 1 if VSync on
+}
+
+void DisplayManager::RegisterKeyEvent(GLFWkeyfun cbfun)
+{
+	glfwSetKeyCallback(window, cbfun);
+}
+
+GLFWwindow* DisplayManager::GetWindow()
+{
+	return window;
 }
 
 void DisplayManager::CloseWindow()

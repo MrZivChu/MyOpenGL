@@ -3,19 +3,23 @@
 class Game
 {
 public:
-	int width_;
-	int height_;
-	const char* title_ = nullptr;
-	GLFWkeyfun cbfun_;
-
-	Game(int width, int height, const char* title, GLFWkeyfun cbfun);
+	Game(int width, int height, const char* title)
+	{
+		width_ = width;
+		height_ = height;
+		title_ = title;
+	}
 
 	void Run()
 	{
-		Initalize();
-		DisplayManager::Get().CreateWindow(width_, height_, title_, cbfun_);
-		LoadContent();
-		while (!glfwWindowShouldClose(DisplayManager::window))
+		DisplayManager::Get().CreateWindow(width_, height_, title_);
+		Init();
+		glfwSetWindowUserPointer(DisplayManager::Get().GetWindow(), this);
+		DisplayManager::Get().RegisterKeyEvent([](GLFWwindow* window, int key, int scancode, int action, int mode) {
+			Game* game = (Game*)(glfwGetWindowUserPointer(DisplayManager::Get().GetWindow()));
+			game->ProcessInput(window, key, scancode, action, mode);
+		});
+		while (!glfwWindowShouldClose(DisplayManager::Get().GetWindow()))
 		{
 			GLfloat currentFrame = glfwGetTime();
 			float deltaTime = currentFrame - lastFrame;
@@ -24,20 +28,25 @@ public:
 			Update(deltaTime);
 
 			glfwPollEvents();
-			 
+
 			Render();
 		}
 		DisplayManager::Get().CloseWindow();
+		Quit();
 	}
-
-	virtual void Initalize();
-	virtual void LoadContent();
-
-	virtual void Update(GLfloat deltaTime);
-	virtual void Render();
-
 private:
+	int width_;
+	int height_;
+	const char* title_ = nullptr;
 	GLfloat deltaTime = 0.0f;
 	GLfloat lastFrame = 0.0f;
+
+	virtual void Init() = 0;
+	virtual void ProcessInput(GLFWwindow* window, int key, int scancode, int action, int mode) = 0;
+
+	virtual void Update(GLfloat deltaTime) = 0;
+	virtual void Render() = 0;
+	virtual void Quit() = 0;
+
 };
 

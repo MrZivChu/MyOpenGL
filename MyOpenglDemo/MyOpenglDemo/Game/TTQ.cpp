@@ -24,7 +24,7 @@ using namespace irrklang;
 #include "BallObject.h"
 
 
-// Game-related State data
+// TTQ-related State data
 SpriteRenderer    *Renderer;
 GameObject        *Player;
 BallObject        *Ball;
@@ -35,13 +35,16 @@ GLfloat            ShakeTime = 0.0f;
 TextRenderer      *Text;
 
 
-Game::Game(GLuint width, GLuint height)
-	: State(GAME_MENU), Keys(), Width(width), Height(height), Level(0), Lives(3)
+TTQ::TTQ(GLuint width, GLuint height, const char* title) : Game(width, height, title)
 {
-
+	State = GAME_ACTIVE;
+	Width = width;
+	Height = height;
+	Level = 0;
+	Lives = 3;
 }
 
-Game::~Game()
+TTQ::~TTQ()
 {
 	delete Renderer;
 	delete Player;
@@ -52,7 +55,7 @@ Game::~Game()
 	SoundEngine->drop();
 }
 
-void Game::Init()
+void TTQ::Init()
 {
 	// Load shaders
 	ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
@@ -84,13 +87,13 @@ void Game::Init()
 	Text = new TextRenderer(this->Width, this->Height);
 	Text->Load("fonts/OCRAEXT.TTF", 24);
 	// Load levels
-	GameLevel one; 
+	GameLevel one;
 	one.Load("levels/one.lvl", this->Width, this->Height * 0.5);
-	GameLevel two; 
+	GameLevel two;
 	two.Load("levels/two.lvl", this->Width, this->Height * 0.5);
-	GameLevel three; 
+	GameLevel three;
 	three.Load("levels/three.lvl", this->Width, this->Height * 0.5);
-	GameLevel four; 
+	GameLevel four;
 	four.Load("levels/four.lvl", this->Width, this->Height * 0.5);
 	this->Levels.push_back(one);
 	this->Levels.push_back(two);
@@ -106,8 +109,10 @@ void Game::Init()
 	SoundEngine->play2D("audio/breakout.mp3", GL_TRUE);
 }
 
-void Game::Update(GLfloat dt)
+void TTQ::Update(GLfloat dt)
 {
+	ProcessInput(dt);
+
 	// Update objects
 	Ball->Move(dt, this->Width);
 	// Check for collisions
@@ -127,7 +132,7 @@ void Game::Update(GLfloat dt)
 	if (Ball->Position.y >= this->Height) // Did ball reach bottom edge?
 	{
 		--this->Lives;
-		// Did the player lose all his lives? : Game over
+		// Did the player lose all his lives? : TTQ over
 		if (this->Lives == 0)
 		{
 			this->ResetLevel();
@@ -146,7 +151,7 @@ void Game::Update(GLfloat dt)
 }
 
 
-void Game::ProcessInput(GLfloat dt)
+void TTQ::ProcessInput(GLfloat dt)
 {
 	if (this->State == GAME_MENU)
 	{
@@ -205,8 +210,10 @@ void Game::ProcessInput(GLfloat dt)
 	}
 }
 
-void Game::Render()
+void TTQ::Render()
 {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
 	if (this->State == GAME_ACTIVE || this->State == GAME_MENU || this->State == GAME_WIN)
 	{
 		// Begin rendering to postprocessing quad
@@ -243,10 +250,11 @@ void Game::Render()
 		Text->RenderText("You WON!!!", 320.0f, this->Height / 2 - 20.0f, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 		Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f, this->Height / 2, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
 	}
+	glfwSwapBuffers(DisplayManager::Get().GetWindow());
 }
 
 
-void Game::ResetLevel()
+void TTQ::ResetLevel()
 {
 	if (this->Level == 0)this->Levels[0].Load("levels/one.lvl", this->Width, this->Height * 0.5f);
 	else if (this->Level == 1)
@@ -259,7 +267,7 @@ void Game::ResetLevel()
 	this->Lives = 3;
 }
 
-void Game::ResetPlayer()
+void TTQ::ResetPlayer()
 {
 	// Reset player/ball stats
 	Player->Size = PLAYER_SIZE;
@@ -276,7 +284,7 @@ void Game::ResetPlayer()
 // PowerUps
 GLboolean IsOtherPowerUpActive(std::vector<PowerUp> &powerUps, std::string type);
 
-void Game::UpdatePowerUps(GLfloat dt)
+void TTQ::UpdatePowerUps(GLfloat dt)
 {
 	for (PowerUp &powerUp : this->PowerUps)
 	{
@@ -335,7 +343,7 @@ GLboolean ShouldSpawn(GLuint chance)
 	GLuint random = rand() % chance;
 	return random == 0;
 }
-void Game::SpawnPowerUps(GameObject &block)
+void TTQ::SpawnPowerUps(GameObject &block)
 {
 	if (ShouldSpawn(75)) // 1 in 75 chance
 		this->PowerUps.push_back(PowerUp("speed", glm::vec3(0.5f, 0.5f, 1.0f), 0.0f, block.Position, ResourceManager::GetTexture("powerup_speed")));
@@ -403,7 +411,7 @@ GLboolean CheckCollision(GameObject &one, GameObject &two);
 Collision CheckCollision(BallObject &one, GameObject &two);
 Direction VectorDirection(glm::vec2 closest);
 
-void Game::DoCollisions()
+void TTQ::DoCollisions()
 {
 	for (GameObject &box : this->Levels[this->Level].Bricks)
 	{
@@ -552,5 +560,24 @@ Direction VectorDirection(glm::vec2 target)
 		}
 	}
 	return (Direction)best_match;
+}
+
+void TTQ::ProcessInput(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	// When a user presses the escape key, we set the WindowShouldClose property to true, closing the application
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, GL_TRUE);
+	if (key >= 0 && key < 1024)
+	{
+		if (action == GLFW_PRESS)
+			Keys[key] = GL_TRUE;
+		else if (action == GLFW_RELEASE)
+			Keys[key] = GL_FALSE;
+	}
+}
+
+void TTQ::Quit()
+{
+	ResourceManager::Clear();
 }
 
