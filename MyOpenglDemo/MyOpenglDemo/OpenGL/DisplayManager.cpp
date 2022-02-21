@@ -32,6 +32,22 @@ void DisplayManager::RegisterKeyEvent(GLFWkeyfun cbfun)
 	glfwSetKeyCallback(window, cbfun);
 }
 
+void DisplayManager::RegisterCursorEvent(GLFWcursorposfun cbfun)
+{
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetCursorPosCallback(window, cbfun);
+}
+
+void DisplayManager::RegisterScrollEvent(GLFWscrollfun cbfun)
+{
+	glfwSetScrollCallback(window, cbfun);
+}
+
+void DisplayManager::RegisterFramebufferSizeEvent(GLFWframebuffersizefun cbfun)
+{
+	glfwSetFramebufferSizeCallback(window, cbfun);
+}
+
 GLFWwindow* DisplayManager::GetWindow()
 {
 	return window;

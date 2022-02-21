@@ -54,6 +54,9 @@
     <ClCompile Include="Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="stencil_testing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenGL\ResourceManager.h">
@@ -96,6 +99,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="OpenGL\Game.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stencil_testing.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

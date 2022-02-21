@@ -16,8 +16,8 @@
 
 int main(int argc, char *argv[])
 {
-	std::shared_ptr<Game> game = std::make_unique<TTQ>(800, 600, "Breakout");
-	game->Run();
+	std::shared_ptr<Game> game = std::make_unique<TTQ>();
+	game->Run(800, 600, "Breakout");
 	return 0;
 }
 

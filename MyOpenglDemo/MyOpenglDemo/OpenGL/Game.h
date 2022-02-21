@@ -3,23 +3,31 @@
 class Game
 {
 public:
-	Game(int width, int height, const char* title)
+	void Run(int width, int height, const char* title)
 	{
-		width_ = width;
-		height_ = height;
-		title_ = title;
-	}
+		windowWidth = width;
+		windowHeight = height;
+		DisplayManagerService::Get().CreateWindow(width, height, title);
 
-	void Run()
-	{
-		DisplayManager::Get().CreateWindow(width_, height_, title_);
-		Init();
-		glfwSetWindowUserPointer(DisplayManager::Get().GetWindow(), this);
-		DisplayManager::Get().RegisterKeyEvent([](GLFWwindow* window, int key, int scancode, int action, int mode) {
-			Game* game = (Game*)(glfwGetWindowUserPointer(DisplayManager::Get().GetWindow()));
-			game->ProcessInput(window, key, scancode, action, mode);
+		glfwSetWindowUserPointer(DisplayManagerService::Get().GetWindow(), this);
+		DisplayManagerService::Get().RegisterKeyEvent([](GLFWwindow* window, int key, int scancode, int action, int mode) {
+			Game* game = (Game*)(glfwGetWindowUserPointer(DisplayManagerService::Get().GetWindow()));
+			game->SetKeyCallback(window, key, scancode, action, mode);
 		});
-		while (!glfwWindowShouldClose(DisplayManager::Get().GetWindow()))
+		DisplayManagerService::Get().RegisterCursorEvent([](GLFWwindow* window, double xpos, double ypos) {
+			Game* game = (Game*)(glfwGetWindowUserPointer(DisplayManagerService::Get().GetWindow()));
+			game->SetCursorCallback(window, xpos, ypos);
+		});
+		DisplayManagerService::Get().RegisterScrollEvent([](GLFWwindow* window, double xoffset, double yoffset) {
+			Game* game = (Game*)(glfwGetWindowUserPointer(DisplayManagerService::Get().GetWindow()));
+			game->SetScrollCallback(window, xoffset, yoffset);
+		});
+		DisplayManagerService::Get().RegisterFramebufferSizeEvent([](GLFWwindow* window, int width, int height) {
+			glViewport(0, 0, width, height);
+		});
+
+		Init();
+		while (!glfwWindowShouldClose(DisplayManagerService::Get().GetWindow()))
 		{
 			GLfloat currentFrame = glfwGetTime();
 			float deltaTime = currentFrame - lastFrame;
@@ -31,22 +39,25 @@ public:
 
 			Render();
 		}
-		DisplayManager::Get().CloseWindow();
+		DisplayManagerService::Get().CloseWindow();
 		Quit();
 	}
+
+protected:
+	GLuint windowWidth;
+	GLuint windowHeight;
+
 private:
-	int width_;
-	int height_;
-	const char* title_ = nullptr;
 	GLfloat deltaTime = 0.0f;
 	GLfloat lastFrame = 0.0f;
 
 	virtual void Init() = 0;
-	virtual void ProcessInput(GLFWwindow* window, int key, int scancode, int action, int mode) = 0;
-
 	virtual void Update(GLfloat deltaTime) = 0;
 	virtual void Render() = 0;
 	virtual void Quit() = 0;
 
+	virtual void SetKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode) = 0;
+	virtual void SetCursorCallback(GLFWwindow* window, double xpos, double ypos) = 0;
+	virtual void SetScrollCallback(GLFWwindow* window, double xoffset, double yoffset) = 0;
 };
 

@@ -54,23 +54,23 @@ class TTQ : public Game
 {
 public:
 	// TTQ state
-	GameState              State;
+	GameState              State = GameState::GAME_ACTIVE;
 	GLboolean              Keys[1024];
 	GLboolean              KeysProcessed[1024];
-	GLuint                 Width, Height;
 	std::vector<GameLevel> Levels;
 	std::vector<PowerUp>   PowerUps;
-	GLuint                 Level;
-	GLuint                 Lives;
+	GLuint                 Level = 0;
+	GLuint                 Lives = 3;
 	// Constructor/Destructor
-	TTQ(GLuint width, GLuint height, const char* title);
 	~TTQ();
 	// Initialize game state (load all shaders/textures/levels)
 	void Init();
 	// GameLoop
 	void ProcessInput(GLfloat dt);
 	void Update(GLfloat dt);
-	void ProcessInput(GLFWwindow* window, int key, int scancode, int action, int mode);
+	virtual void SetKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode) override;
+	virtual void SetCursorCallback(GLFWwindow* window, double xpos, double ypos) override;
+	virtual void SetScrollCallback(GLFWwindow* window, double xoffset, double yoffset) override;
 	void Render();
 	void Quit();
 	void DoCollisions();

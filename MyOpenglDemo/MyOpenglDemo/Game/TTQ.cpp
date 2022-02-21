@@ -34,16 +34,6 @@ ISoundEngine      *SoundEngine = createIrrKlangDevice();
 GLfloat            ShakeTime = 0.0f;
 TextRenderer      *Text;
 
-
-TTQ::TTQ(GLuint width, GLuint height, const char* title) : Game(width, height, title)
-{
-	State = GAME_ACTIVE;
-	Width = width;
-	Height = height;
-	Level = 0;
-	Lives = 3;
-}
-
 TTQ::~TTQ()
 {
 	delete Renderer;
@@ -62,7 +52,7 @@ void TTQ::Init()
 	ResourceManager::LoadShader("shaders/particle.vs", "shaders/particle.frag", nullptr, "particle");
 	ResourceManager::LoadShader("shaders/post_processing.vs", "shaders/post_processing.frag", nullptr, "postprocessing");
 	// Configure shaders
-	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(this->Width), static_cast<GLfloat>(this->Height), 0.0f, -1.0f, 1.0f);
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(this->windowWidth), static_cast<GLfloat>(this->windowHeight), 0.0f, -1.0f, 1.0f);
 	ResourceManager::GetShader("sprite").Use().SetInteger("sprite", 0);
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 	ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
@@ -83,25 +73,25 @@ void TTQ::Init()
 	// Set render-specific controls
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 	Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
-	Effects = new PostProcessor(ResourceManager::GetShader("postprocessing"), this->Width, this->Height);
-	Text = new TextRenderer(this->Width, this->Height);
+	Effects = new PostProcessor(ResourceManager::GetShader("postprocessing"), this->windowWidth, this->windowHeight);
+	Text = new TextRenderer(this->windowWidth, this->windowHeight);
 	Text->Load("fonts/OCRAEXT.TTF", 24);
 	// Load levels
 	GameLevel one;
-	one.Load("levels/one.lvl", this->Width, this->Height * 0.5);
+	one.Load("levels/one.lvl", this->windowWidth, this->windowHeight * 0.5);
 	GameLevel two;
-	two.Load("levels/two.lvl", this->Width, this->Height * 0.5);
+	two.Load("levels/two.lvl", this->windowWidth, this->windowHeight * 0.5);
 	GameLevel three;
-	three.Load("levels/three.lvl", this->Width, this->Height * 0.5);
+	three.Load("levels/three.lvl", this->windowWidth, this->windowHeight * 0.5);
 	GameLevel four;
-	four.Load("levels/four.lvl", this->Width, this->Height * 0.5);
+	four.Load("levels/four.lvl", this->windowWidth, this->windowHeight * 0.5);
 	this->Levels.push_back(one);
 	this->Levels.push_back(two);
 	this->Levels.push_back(three);
 	this->Levels.push_back(four);
 	this->Level = 0;
 	// Configure game objects
-	glm::vec2 playerPos = glm::vec2(this->Width / 2 - PLAYER_SIZE.x / 2, this->Height - PLAYER_SIZE.y);
+	glm::vec2 playerPos = glm::vec2(this->windowWidth / 2 - PLAYER_SIZE.x / 2, this->windowHeight - PLAYER_SIZE.y);
 	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
 	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
@@ -114,7 +104,7 @@ void TTQ::Update(GLfloat dt)
 	ProcessInput(dt);
 
 	// Update objects
-	Ball->Move(dt, this->Width);
+	Ball->Move(dt, this->windowWidth);
 	// Check for collisions
 	this->DoCollisions();
 	// Update particles
@@ -129,7 +119,7 @@ void TTQ::Update(GLfloat dt)
 			Effects->Shake = GL_FALSE;
 	}
 	// Check loss condition
-	if (Ball->Position.y >= this->Height) // Did ball reach bottom edge?
+	if (Ball->Position.y >= this->windowHeight) // Did ball reach bottom edge?
 	{
 		--this->Lives;
 		// Did the player lose all his lives? : TTQ over
@@ -198,7 +188,7 @@ void TTQ::ProcessInput(GLfloat dt)
 		}
 		if (this->Keys[GLFW_KEY_D])
 		{
-			if (Player->Position.x <= this->Width - Player->Size.x)
+			if (Player->Position.x <= this->windowWidth - Player->Size.x)
 			{
 				Player->Position.x += velocity;
 				if (Ball->Stuck)
@@ -219,7 +209,7 @@ void TTQ::Render()
 		// Begin rendering to postprocessing quad
 		Effects->BeginRender();
 		// Draw background
-		Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0.0f);
+		Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0, 0), glm::vec2(this->windowWidth, this->windowHeight), 0.0f);
 		// Draw level
 		this->Levels[this->Level].Draw(*Renderer);
 		// Draw player
@@ -242,27 +232,26 @@ void TTQ::Render()
 	}
 	if (this->State == GAME_MENU)
 	{
-		Text->RenderText("Press ENTER to start", 250.0f, this->Height / 2, 1.0f);
-		Text->RenderText("Press W or S to select level", 245.0f, this->Height / 2 + 20.0f, 0.75f);
+		Text->RenderText("Press ENTER to start", 250.0f, this->windowHeight / 2, 1.0f);
+		Text->RenderText("Press W or S to select level", 245.0f, this->windowHeight / 2 + 20.0f, 0.75f);
 	}
 	if (this->State == GAME_WIN)
 	{
-		Text->RenderText("You WON!!!", 320.0f, this->Height / 2 - 20.0f, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-		Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f, this->Height / 2, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
+		Text->RenderText("You WON!!!", 320.0f, this->windowHeight / 2 - 20.0f, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+		Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f, this->windowHeight / 2, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
 	}
-	glfwSwapBuffers(DisplayManager::Get().GetWindow());
+	glfwSwapBuffers(DisplayManagerService::Get().GetWindow());
 }
-
 
 void TTQ::ResetLevel()
 {
-	if (this->Level == 0)this->Levels[0].Load("levels/one.lvl", this->Width, this->Height * 0.5f);
+	if (this->Level == 0)this->Levels[0].Load("levels/one.lvl", this->windowWidth, this->windowHeight * 0.5f);
 	else if (this->Level == 1)
-		this->Levels[1].Load("levels/two.lvl", this->Width, this->Height * 0.5f);
+		this->Levels[1].Load("levels/two.lvl", this->windowWidth, this->windowHeight * 0.5f);
 	else if (this->Level == 2)
-		this->Levels[2].Load("levels/three.lvl", this->Width, this->Height * 0.5f);
+		this->Levels[2].Load("levels/three.lvl", this->windowWidth, this->windowHeight * 0.5f);
 	else if (this->Level == 3)
-		this->Levels[3].Load("levels/four.lvl", this->Width, this->Height * 0.5f);
+		this->Levels[3].Load("levels/four.lvl", this->windowWidth, this->windowHeight * 0.5f);
 
 	this->Lives = 3;
 }
@@ -271,7 +260,7 @@ void TTQ::ResetPlayer()
 {
 	// Reset player/ball stats
 	Player->Size = PLAYER_SIZE;
-	Player->Position = glm::vec2(this->Width / 2 - PLAYER_SIZE.x / 2, this->Height - PLAYER_SIZE.y);
+	Player->Position = glm::vec2(this->windowWidth / 2 - PLAYER_SIZE.x / 2, this->windowHeight - PLAYER_SIZE.y);
 	Ball->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -(BALL_RADIUS * 2)), INITIAL_BALL_VELOCITY);
 	// Also disable all active powerups
 	Effects->Chaos = Effects->Confuse = GL_FALSE;
@@ -469,7 +458,7 @@ void TTQ::DoCollisions()
 		if (!powerUp.Destroyed)
 		{
 			// First check if powerup passed bottom edge, if so: keep as inactive and destroy
-			if (powerUp.Position.y >= this->Height)
+			if (powerUp.Position.y >= this->windowHeight)
 				powerUp.Destroyed = GL_TRUE;
 
 			if (CheckCollision(*Player, powerUp))
@@ -562,7 +551,7 @@ Direction VectorDirection(glm::vec2 target)
 	return (Direction)best_match;
 }
 
-void TTQ::ProcessInput(GLFWwindow* window, int key, int scancode, int action, int mode)
+void TTQ::SetKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	// When a user presses the escape key, we set the WindowShouldClose property to true, closing the application
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
@@ -574,6 +563,14 @@ void TTQ::ProcessInput(GLFWwindow* window, int key, int scancode, int action, in
 		else if (action == GLFW_RELEASE)
 			Keys[key] = GL_FALSE;
 	}
+}
+void TTQ::SetCursorCallback(GLFWwindow* window, double xpos, double ypos)
+{
+
+}
+void TTQ::SetScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+{
+
 }
 
 void TTQ::Quit()

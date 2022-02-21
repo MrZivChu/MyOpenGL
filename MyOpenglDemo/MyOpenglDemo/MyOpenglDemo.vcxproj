@@ -161,8 +161,10 @@
     <ClCompile Include="OpenGL\SpriteRenderer.cpp" />
     <ClCompile Include="OpenGL\Texture.cpp" />
     <ClCompile Include="OpenGL\TextRenderer.cpp" />
+    <ClCompile Include="stencil_testing.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OpenGL\Camera.h" />
     <ClInclude Include="OpenGL\Game.h" />
     <ClInclude Include="OpenGL\DisplayManager.h" />
     <ClInclude Include="Game\BallObject.h" />
@@ -177,6 +179,7 @@
     <ClInclude Include="OpenGL\SpriteRenderer.h" />
     <ClInclude Include="OpenGL\Texture.h" />
     <ClInclude Include="OpenGL\TextRenderer.h" />
+    <ClInclude Include="stencil_testing.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\awesomeface.png" />
