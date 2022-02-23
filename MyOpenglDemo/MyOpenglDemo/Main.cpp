@@ -13,10 +13,11 @@
 #include "Game/TTQ.h"
 #include "OpenGL/ResourceManager.h"
 #include "OpenGL/DisplayManager.h"
+#include "stencil_testing.h"
 
 int main(int argc, char *argv[])
 {
-	std::shared_ptr<Game> game = std::make_unique<TTQ>();
+	std::shared_ptr<Game> game = std::make_unique<stencil_testing>();
 	game->Run(800, 600, "Breakout");
 	return 0;
 }

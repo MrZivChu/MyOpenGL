@@ -2,17 +2,13 @@
 
 void stencil_testing::Init()
 {
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
-	glEnable(GL_STENCIL_TEST);
-	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+	shader = ResourceManager::LoadShader("shaders/stencil_testing.vs", "shaders/stencil_testing.fs", nullptr, "shader");
+	shaderSingleColor = ResourceManager::LoadShader("shaders/stencil_testing.vs", "shaders/stencil_single_color.fs", nullptr, "shaderSingleColor");
 
-	shader = ResourceManager::LoadShader("2.stencil_testing.vs", "2.stencil_testing.fs", nullptr, "shader");
-	shaderSingleColor = ResourceManager::LoadShader("2.stencil_testing.vs", "2.stencil_single_color.fs", nullptr, "shaderSingleColor");
+	cubeTexture = ResourceManager::LoadTexture("textures/block_solid.png", false, "cubeTexture");
+	floorTexture = ResourceManager::LoadTexture("textures/background.jpg", false, "floorTexture");
 
 	float cubeVertices[] = {
-		// positions          // texture Coords
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
 		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
@@ -65,6 +61,13 @@ void stencil_testing::Init()
 		-5.0f, -0.5f, -5.0f,  0.0f, 2.0f,
 		 5.0f, -0.5f, -5.0f,  2.0f, 2.0f
 	};
+
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	glEnable(GL_STENCIL_TEST);
+	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+
 	// cube VAO
 	glGenVertexArrays(1, &cubeVAO);
 	glGenBuffers(1, &cubeVBO);
@@ -88,13 +91,6 @@ void stencil_testing::Init()
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glBindVertexArray(0);
 
-	// load textures
-	// -------------
-	cubeTexture = ResourceManager::LoadTexture("resources/textures/marble.jpg", false, "cubeTexture");
-	floorTexture = ResourceManager::LoadTexture("resources/textures/metal.png", false, "floorTexture");
-
-	// shader configuration
-	// --------------------
 	shader.Use();
 	shader.SetInteger("texture1", 0);
 }
@@ -103,8 +99,6 @@ void stencil_testing::Update(GLfloat deltaTime)
 {
 	processInput(DisplayManagerService::Get().GetWindow(), deltaTime);
 
-	// render
-	// ------
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // don't forget to clear the stencil buffer!
 
@@ -171,16 +165,9 @@ void stencil_testing::Update(GLfloat deltaTime)
 	glStencilMask(0xFF);
 	glStencilFunc(GL_ALWAYS, 0, 0xFF);
 	glEnable(GL_DEPTH_TEST);
-
-	// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-	// -------------------------------------------------------------------------------
-	glfwSwapBuffers(DisplayManagerService::Get().GetWindow());
-	glfwPollEvents();
 }
 
-void stencil_testing::Render()
-{
-}
+void stencil_testing::Render() {}
 
 void stencil_testing::Quit()
 {
@@ -192,42 +179,15 @@ void stencil_testing::Quit()
 
 void stencil_testing::processInput(GLFWwindow *window, GLfloat deltaTime)
 {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, true);
-
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		camera.ProcessKeyboard(Camera_Movement::FORWARD, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		camera.ProcessKeyboard(Camera_Movement::BACKWARD, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		camera.ProcessKeyboard(Camera_Movement::LEFT, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		camera.ProcessKeyboard(Camera_Movement::RIGHT, deltaTime);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+	camera.ProcessKeyboard(window, deltaTime);
 }
 
-void stencil_testing::SetKeyCallback(GLFWwindow * window, int key, int scancode, int action, int mode)
-{
-}
+void stencil_testing::SetKeyCallback(GLFWwindow * window, int key, int scancode, int action, int mode) {}
 
 void stencil_testing::SetCursorCallback(GLFWwindow * window, double xposIn, double yposIn)
 {
-	float xpos = static_cast<float>(xposIn);
-	float ypos = static_cast<float>(yposIn);
-
-	if (firstMouse)
-	{
-		lastX = xpos;
-		lastY = ypos;
-		firstMouse = false;
-	}
-
-	float xoffset = xpos - lastX;
-	float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
-
-	lastX = xpos;
-	lastY = ypos;
-
-	camera.ProcessMouseMovement(xoffset, yoffset);
+	camera.ProcessMouseMovement(xposIn, yposIn);
 }
 
 void stencil_testing::SetScrollCallback(GLFWwindow * window, double xoffset, double yoffset)

@@ -162,6 +162,9 @@
     <None Include="irrKlang.dll" />
     <None Include="ikpFlac.dll" />
     <None Include="ikpMP3.dll" />
+    <None Include="shaders\stencil_testing.vs" />
+    <None Include="shaders\stencil_single_color.fs" />
+    <None Include="shaders\stencil_testing.fs" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="audio\solid.wav">

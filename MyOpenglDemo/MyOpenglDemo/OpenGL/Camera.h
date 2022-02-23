@@ -14,7 +14,9 @@ enum class Camera_Movement {
 	FORWARD,
 	BACKWARD,
 	LEFT,
-	RIGHT
+	RIGHT,
+	UP,
+	DOWN
 };
 
 // Default camera values
@@ -69,22 +71,45 @@ public:
 	}
 
 	// processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
-	void ProcessKeyboard(Camera_Movement direction, float deltaTime)
+	void ProcessKeyboard(GLFWwindow *window, float deltaTime)
 	{
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+			glfwSetWindowShouldClose(window, true);
+
 		float velocity = MovementSpeed * deltaTime;
-		if (direction == Camera_Movement::FORWARD)
+		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 			Position += Front * velocity;
-		if (direction == Camera_Movement::BACKWARD)
+		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 			Position -= Front * velocity;
-		if (direction == Camera_Movement::LEFT)
+		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 			Position -= Right * velocity;
-		if (direction == Camera_Movement::RIGHT)
+		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 			Position += Right * velocity;
+		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+			Position += Up * velocity;
+		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+			Position -= Up * velocity;
 	}
 
 	// processes input received from a mouse input system. Expects the offset value in both the x and y direction.
-	void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true)
+	void ProcessMouseMovement(float xposIn, float yposIn, GLboolean constrainPitch = true)
 	{
+		float xpos = static_cast<float>(xposIn);
+		float ypos = static_cast<float>(yposIn);
+
+		if (firstMouse)
+		{
+			lastX = xpos;
+			lastY = ypos;
+			firstMouse = false;
+		}
+
+		float xoffset = xpos - lastX;
+		float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+		lastX = xpos;
+		lastY = ypos;
+
 		xoffset *= MouseSensitivity;
 		yoffset *= MouseSensitivity;
 
@@ -115,6 +140,10 @@ public:
 	}
 
 private:
+	float lastX = 0;
+	float lastY = 0;
+	bool firstMouse = true;
+
 	// calculates the front vector from the Camera's (updated) Euler Angles
 	void updateCameraVectors()
 	{

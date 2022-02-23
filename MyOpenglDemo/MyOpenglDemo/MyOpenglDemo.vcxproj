@@ -209,6 +209,9 @@
     <None Include="shaders\post_processing.vs" />
     <None Include="shaders\sprite.frag" />
     <None Include="shaders\sprite.vs" />
+    <None Include="shaders\stencil_single_color.fs" />
+    <None Include="shaders\stencil_testing.fs" />
+    <None Include="shaders\stencil_testing.vs" />
     <None Include="shaders\text.frag" />
     <None Include="shaders\text.vs" />
   </ItemGroup>

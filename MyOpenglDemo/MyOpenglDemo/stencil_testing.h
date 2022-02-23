@@ -8,9 +8,6 @@ class stencil_testing :public Game
 {
 private:
 	Camera camera = (glm::vec3(0.0f, 0.0f, 3.0f));
-	float lastX = (float)800 / 2.0;
-	float lastY = (float)600 / 2.0;
-	bool firstMouse = true;
 	unsigned int cubeVAO, cubeVBO;
 	unsigned int planeVAO, planeVBO;
 	Shader shader;

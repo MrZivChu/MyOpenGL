@@ -17,7 +17,8 @@ void DisplayManager::CreateWindow(int width, int height, const char* title)
 
 	glewExperimental = GL_TRUE;
 	glewInit();
-	glGetError(); // Call it once to catch glewInit() bug, all other errors are now from our application.
+	//调用一次来捕获glewInit()错误，所有其他错误现在都来自我们的应用程序。
+	glGetError(); 
 
 	glViewport(0, 0, width, height);
 	glEnable(GL_CULL_FACE);
@@ -34,7 +35,6 @@ void DisplayManager::RegisterKeyEvent(GLFWkeyfun cbfun)
 
 void DisplayManager::RegisterCursorEvent(GLFWcursorposfun cbfun)
 {
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(window, cbfun);
 }
 
