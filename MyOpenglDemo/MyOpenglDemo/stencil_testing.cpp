@@ -100,7 +100,7 @@ void stencil_testing::Update(GLfloat deltaTime)
 	processInput(DisplayManagerService::Get().GetWindow(), deltaTime);
 
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // don't forget to clear the stencil buffer!
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	// set uniforms
 	shaderSingleColor.Use();
@@ -114,53 +114,84 @@ void stencil_testing::Update(GLfloat deltaTime)
 	shader.SetMatrix4("view", view);
 	shader.SetMatrix4("projection", projection);
 
-	// draw floor as normal, but don't write the floor to the stencil buffer, we only care about the containers. We set its mask to 0x00 to not write to the stencil buffer.
+
+	// 设置关闭模板缓冲写入
 	glStencilMask(0x00);
-	// floor
+
+	// 绘制地板
 	glBindVertexArray(planeVAO);
 	floorTexture.Bind();
 	shader.SetMatrix4("model", glm::mat4(1.0f));
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
 
-	// 1st. render pass, draw objects as normal, writing to the stencil buffer
-	// --------------------------------------------------------------------
-	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	// 启用模板缓冲写入
 	glStencilMask(0xFF);
-	// cubes
+	// 写入为1
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+
 	glBindVertexArray(cubeVAO);
 	glActiveTexture(GL_TEXTURE0);
 	cubeTexture.Bind();
+
+	// 绘制第一个Box
 	model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
-	shader.SetMatrix4("model", model);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-	model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
 	shader.SetMatrix4("model", model);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 
-	// 2nd. render pass: now draw slightly scaled versions of the objects, this time disabling stencil writing.
-	// Because the stencil buffer is now filled with several 1s. The parts of the buffer that are 1 are not drawn, thus only drawing 
-	// the objects' size differences, making it look like borders.
-	// -----------------------------------------------------------------------------------------------------------------------------
-	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-	glStencilMask(0x00);
+	// 绘制第二个Box
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(1.0f, 0.0f, 0.0f));
+	shader.SetMatrix4("model", model);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+	// 绘制小Box
+	float scale1= 0.5f;
+	glStencilMask(0xFF);
 	glDisable(GL_DEPTH_TEST);
+	glStencilFunc(GL_ALWAYS, 0, 0xFF);
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::scale(model, glm::vec3(scale1));
+	shader.SetMatrix4("model", model);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(-0.5f, 0.0f, -1.0f));
+	model = glm::scale(model, glm::vec3(scale1));
+	shader.SetMatrix4("model", model);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
 	shaderSingleColor.Use();
-	float scale = 1.1f;
-	// cubes
+	float scale = 1.25f;
 	glBindVertexArray(cubeVAO);
 	cubeTexture.Bind();
+
+	// 关闭模板缓冲写入
+	glStencilMask(0x00);
+	// 不等于1的地方显示
+	glStencilFunc(GL_EQUAL, 1, 0xFF);
+	glDisable(GL_DEPTH_TEST);
+
+	// 绘制第一个Box边框
 	model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
-	model = glm::scale(model, glm::vec3(scale, scale, scale));
+	model = glm::scale(model, glm::vec3(scale));
 	shaderSingleColor.SetMatrix4("model", model);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	glStencilFunc(GL_EQUAL, 0, 0xFF);
+
+	// 绘制第二个Box边框
 	model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
-	model = glm::scale(model, glm::vec3(scale, scale, scale));
+	model = glm::translate(model, glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::scale(model, glm::vec3(scale));
 	shaderSingleColor.SetMatrix4("model", model);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
 	glBindVertexArray(0);
 	glStencilMask(0xFF);
 	glStencilFunc(GL_ALWAYS, 0, 0xFF);
@@ -175,11 +206,12 @@ void stencil_testing::Quit()
 	glDeleteVertexArrays(1, &planeVAO);
 	glDeleteBuffers(1, &cubeVBO);
 	glDeleteBuffers(1, &planeVBO);
+	ResourceManager::Clear();
 }
 
 void stencil_testing::processInput(GLFWwindow *window, GLfloat deltaTime)
 {
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	camera.ProcessKeyboard(window, deltaTime);
 }
 

@@ -86,9 +86,9 @@ public:
 		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 			Position += Right * velocity;
 		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
-			Position += Up * velocity;
-		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
 			Position -= Up * velocity;
+		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+			Position += Up * velocity;
 	}
 
 	// processes input received from a mouse input system. Expects the offset value in both the x and y direction.

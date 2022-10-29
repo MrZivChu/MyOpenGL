@@ -12,15 +12,21 @@ public:
 		glfwSetWindowUserPointer(DisplayManagerService::Get().GetWindow(), this);
 		DisplayManagerService::Get().RegisterKeyEvent([](GLFWwindow* window, int key, int scancode, int action, int mode) {
 			Game* game = (Game*)(glfwGetWindowUserPointer(DisplayManagerService::Get().GetWindow()));
-			game->SetKeyCallback(window, key, scancode, action, mode);
+			if (game) {
+				game->SetKeyCallback(window, key, scancode, action, mode);
+			}
 		});
 		DisplayManagerService::Get().RegisterCursorEvent([](GLFWwindow* window, double xpos, double ypos) {
 			Game* game = (Game*)(glfwGetWindowUserPointer(DisplayManagerService::Get().GetWindow()));
-			game->SetCursorCallback(window, xpos, ypos);
+			if (game) {
+				game->SetCursorCallback(window, xpos, ypos);
+			}
 		});
 		DisplayManagerService::Get().RegisterScrollEvent([](GLFWwindow* window, double xoffset, double yoffset) {
 			Game* game = (Game*)(glfwGetWindowUserPointer(DisplayManagerService::Get().GetWindow()));
-			game->SetScrollCallback(window, xoffset, yoffset);
+			if (game) {
+				game->SetScrollCallback(window, xoffset, yoffset);
+			}
 		});
 		DisplayManagerService::Get().RegisterFramebufferSizeEvent([](GLFWwindow* window, int width, int height) {
 			glViewport(0, 0, width, height);

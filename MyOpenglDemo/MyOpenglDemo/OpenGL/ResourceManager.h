@@ -28,9 +28,6 @@
 class ResourceManager
 {
 public:
-	// Resource storage
-	static std::map<std::string, Shader>    Shaders;
-	static std::map<std::string, Texture2D> Textures;
 	// Loads (and generates) a shader program from file loading vertex, fragment (and geometry) shader's source code. If gShaderFile is not nullptr, it also loads a geometry shader
 	static Shader   LoadShader(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile, std::string name);
 	// Retrieves a stored sader
@@ -42,6 +39,8 @@ public:
 	// Properly de-allocates all loaded resources
 	static void      Clear();
 private:
+	static std::map<std::string, Shader>    Shaders;
+	static std::map<std::string, Texture2D> Textures;
 	// Private constructor, that is we do not want any actual resource manager objects. Its members and functions should be publicly available (static).
 	ResourceManager() { }
 	// Loads and generates a shader from file
