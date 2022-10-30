@@ -22,6 +22,7 @@ using namespace irrklang;
 #include "../OpenGL/TextRenderer.h"
 #include "GameObject.h"
 #include "BallObject.h"
+#include "../OpenGL/InputHelper.h"
 
 
 // TTQ-related State data
@@ -45,8 +46,9 @@ TTQ::~TTQ()
 	SoundEngine->drop();
 }
 
-void TTQ::Init()
+void TTQ::Start()
 {
+	glfwGetWindowSize(window, &windowWidth, &windowHeight);
 	// Load shaders
 	ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
 	ResourceManager::LoadShader("shaders/particle.vs", "shaders/particle.frag", nullptr, "particle");
@@ -138,6 +140,46 @@ void TTQ::Update(GLfloat dt)
 		Effects->Chaos = GL_TRUE;
 		this->State = GAME_WIN;
 	}
+
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	if (this->State == GAME_ACTIVE || this->State == GAME_MENU || this->State == GAME_WIN)
+	{
+		// Begin rendering to postprocessing quad
+		Effects->BeginRender();
+		// Draw background
+		Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0, 0), glm::vec2(this->windowWidth, this->windowHeight), 0.0f);
+		// Draw level
+		this->Levels[this->Level].Draw(*Renderer);
+		// Draw player
+		Player->Draw(*Renderer);
+		// Draw PowerUps
+		for (PowerUp &powerUp : this->PowerUps)
+			if (!powerUp.Destroyed)
+				powerUp.Draw(*Renderer);
+		// Draw particles	
+		Particles->Draw();
+		// Draw ball
+		Ball->Draw(*Renderer);
+		// End rendering to postprocessing quad
+		Effects->EndRender();
+		// Render postprocessing quad
+		Effects->Render(glfwGetTime());
+		// Render text (don't include in postprocessing)
+		std::stringstream ss; ss << this->Lives;
+		Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
+	}
+	if (this->State == GAME_MENU)
+	{
+		Text->RenderText("Press ENTER to start", 250.0f, this->windowHeight / 2, 1.0f);
+		Text->RenderText("Press W or S to select level", 245.0f, this->windowHeight / 2 + 20.0f, 0.75f);
+	}
+	if (this->State == GAME_WIN)
+	{
+		Text->RenderText("You WON!!!", 320.0f, this->windowHeight / 2 - 20.0f, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+		Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f, this->windowHeight / 2, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
+	}
+	glfwSwapBuffers(window);
 }
 
 
@@ -198,49 +240,6 @@ void TTQ::ProcessInput(GLfloat dt)
 		if (this->Keys[GLFW_KEY_SPACE])
 			Ball->Stuck = GL_FALSE;
 	}
-}
-
-void TTQ::Render()
-{
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	if (this->State == GAME_ACTIVE || this->State == GAME_MENU || this->State == GAME_WIN)
-	{
-		// Begin rendering to postprocessing quad
-		Effects->BeginRender();
-		// Draw background
-		Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0, 0), glm::vec2(this->windowWidth, this->windowHeight), 0.0f);
-		// Draw level
-		this->Levels[this->Level].Draw(*Renderer);
-		// Draw player
-		Player->Draw(*Renderer);
-		// Draw PowerUps
-		for (PowerUp &powerUp : this->PowerUps)
-			if (!powerUp.Destroyed)
-				powerUp.Draw(*Renderer);
-		// Draw particles	
-		Particles->Draw();
-		// Draw ball
-		Ball->Draw(*Renderer);
-		// End rendering to postprocessing quad
-		Effects->EndRender();
-		// Render postprocessing quad
-		Effects->Render(glfwGetTime());
-		// Render text (don't include in postprocessing)
-		std::stringstream ss; ss << this->Lives;
-		Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
-	}
-	if (this->State == GAME_MENU)
-	{
-		Text->RenderText("Press ENTER to start", 250.0f, this->windowHeight / 2, 1.0f);
-		Text->RenderText("Press W or S to select level", 245.0f, this->windowHeight / 2 + 20.0f, 0.75f);
-	}
-	if (this->State == GAME_WIN)
-	{
-		Text->RenderText("You WON!!!", 320.0f, this->windowHeight / 2 - 20.0f, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-		Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f, this->windowHeight / 2, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
-	}
-	glfwSwapBuffers(DisplayManagerService::Get().GetWindow());
 }
 
 void TTQ::ResetLevel()
@@ -551,7 +550,7 @@ Direction VectorDirection(glm::vec2 target)
 	return (Direction)best_match;
 }
 
-void TTQ::SetKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
+void TTQ::OnKeyCallback(int key, int scancode, int action, int mode)
 {
 	// When a user presses the escape key, we set the WindowShouldClose property to true, closing the application
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
@@ -563,14 +562,6 @@ void TTQ::SetKeyCallback(GLFWwindow* window, int key, int scancode, int action, 
 		else if (action == GLFW_RELEASE)
 			Keys[key] = GL_FALSE;
 	}
-}
-void TTQ::SetCursorCallback(GLFWwindow* window, double xpos, double ypos)
-{
-
-}
-void TTQ::SetScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
-{
-
 }
 
 void TTQ::Quit()

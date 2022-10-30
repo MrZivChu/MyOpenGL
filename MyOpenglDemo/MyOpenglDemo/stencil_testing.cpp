@@ -1,6 +1,7 @@
 #include "stencil_testing.h"
+#include "OpenGL/DisplayManager.h"
 
-void stencil_testing::Init()
+void stencil_testing::Start()
 {
 	shader = ResourceManager::LoadShader("shaders/stencil_testing.vs", "shaders/stencil_testing.fs", nullptr, "shader");
 	shaderSingleColor = ResourceManager::LoadShader("shaders/stencil_testing.vs", "shaders/stencil_single_color.fs", nullptr, "shaderSingleColor");
@@ -97,11 +98,12 @@ void stencil_testing::Init()
 
 void stencil_testing::Update(GLfloat deltaTime)
 {
-	processInput(DisplayManagerService::Get().GetWindow(), deltaTime);
-
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
+	int windowWidth = 0;
+	int windowHeight = 0;
+	glfwGetWindowSize(window, &windowWidth, &windowHeight);
 	// set uniforms
 	shaderSingleColor.Use();
 	glm::mat4 model = glm::mat4(1.0f);
@@ -118,12 +120,16 @@ void stencil_testing::Update(GLfloat deltaTime)
 	// 设置关闭模板缓冲写入
 	glStencilMask(0x00);
 
+	glCullFace(GL_FRONT);//剔除前面
+	glEnable(GL_CULL_FACE);//启用剔除功能
 	// 绘制地板
 	glBindVertexArray(planeVAO);
 	floorTexture.Bind();
 	shader.SetMatrix4("model", glm::mat4(1.0f));
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
+
+	glDisable(GL_CULL_FACE);//关闭剔除功能,双面
 
 	// 启用模板缓冲写入
 	glStencilMask(0xFF);
@@ -147,7 +153,7 @@ void stencil_testing::Update(GLfloat deltaTime)
 
 
 	// 绘制小Box
-	float scale1= 0.5f;
+	float scale1 = 0.5f;
 	glStencilMask(0xFF);
 	glDisable(GL_DEPTH_TEST);
 	glStencilFunc(GL_ALWAYS, 0, 0xFF);
@@ -198,8 +204,6 @@ void stencil_testing::Update(GLfloat deltaTime)
 	glEnable(GL_DEPTH_TEST);
 }
 
-void stencil_testing::Render() {}
-
 void stencil_testing::Quit()
 {
 	glDeleteVertexArrays(1, &cubeVAO);
@@ -207,22 +211,4 @@ void stencil_testing::Quit()
 	glDeleteBuffers(1, &cubeVBO);
 	glDeleteBuffers(1, &planeVBO);
 	ResourceManager::Clear();
-}
-
-void stencil_testing::processInput(GLFWwindow *window, GLfloat deltaTime)
-{
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-	camera.ProcessKeyboard(window, deltaTime);
-}
-
-void stencil_testing::SetKeyCallback(GLFWwindow * window, int key, int scancode, int action, int mode) {}
-
-void stencil_testing::SetCursorCallback(GLFWwindow * window, double xposIn, double yposIn)
-{
-	camera.ProcessMouseMovement(xposIn, yposIn);
-}
-
-void stencil_testing::SetScrollCallback(GLFWwindow * window, double xoffset, double yoffset)
-{
-	camera.ProcessMouseScroll(static_cast<float>(yoffset));
 }

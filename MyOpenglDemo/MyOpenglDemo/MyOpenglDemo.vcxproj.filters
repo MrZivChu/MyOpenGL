@@ -48,13 +48,19 @@
     <ClCompile Include="OpenGL\DisplayManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Game\TTQ.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="stencil_testing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\InputHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\EngineEventHandler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\TTQ.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,9 +101,6 @@
     <ClInclude Include="OpenGL\DisplayManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Game\TTQ.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="OpenGL\Game.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -105,6 +108,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stencil_testing.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\InputHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\MonoBehaviour.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\EngineEventHandler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\TTQ.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -159,9 +174,6 @@
     <None Include="levels\two.lvl" />
     <None Include="shaders\text.frag" />
     <None Include="shaders\text.vs" />
-    <None Include="irrKlang.dll" />
-    <None Include="ikpFlac.dll" />
-    <None Include="ikpMP3.dll" />
     <None Include="shaders\stencil_testing.vs" />
     <None Include="shaders\stencil_single_color.fs" />
     <None Include="shaders\stencil_testing.fs" />
@@ -185,5 +197,10 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\OCRAEXT.TTF" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="OpenGL\dll\irrKlang.dll" />
+    <CopyFileToFolders Include="OpenGL\dll\ikpMP3.dll" />
+    <CopyFileToFolders Include="OpenGL\dll\ikpFlac.dll" />
   </ItemGroup>
 </Project>

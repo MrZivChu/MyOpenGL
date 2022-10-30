@@ -1,10 +1,10 @@
 #pragma once
 
-#include "OpenGL/Game.h"
 #include "OpenGL/Camera.h"
 #include "OpenGL/ResourceManager.h"
+#include "OpenGL/MonoBehaviour.h"
 
-class stencil_testing :public Game
+class stencil_testing :public MonoBehaviour
 {
 private:
 	Camera camera = (glm::vec3(0.0f, 0.0f, 3.0f));
@@ -15,15 +15,8 @@ private:
 	Texture2D  cubeTexture;
 	Texture2D floorTexture;
 
-	void processInput(GLFWwindow *window, GLfloat deltaTime);
-
-	// Í¨¹ý Game ¼Ì³Ð
-	virtual void Init() override;
+	virtual void Start() override;
 	virtual void Update(GLfloat deltaTime) override;
-	virtual void Render() override;
 	virtual void Quit() override;
-	virtual void SetKeyCallback(GLFWwindow * window, int key, int scancode, int action, int mode) override;
-	virtual void SetCursorCallback(GLFWwindow * window, double xposIn, double yposIn) override;
-	virtual void SetScrollCallback(GLFWwindow * window, double xoffset, double yoffset) override;
 };
 

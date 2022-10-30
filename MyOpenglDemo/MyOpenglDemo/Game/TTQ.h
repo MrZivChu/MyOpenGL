@@ -19,7 +19,7 @@
 #include "GameObject.h"
 #include "GameLevel.h"
 #include "PowerUp.h"
-#include "../OpenGL/Game.h"
+#include "../OpenGL/MonoBehaviour.h"
 
 // Represents the current state of the game
 enum GameState {
@@ -50,7 +50,7 @@ const GLfloat BALL_RADIUS = 12.5f;
 // TTQ holds all game-related state and functionality.
 // Combines all game-related data into a single class for
 // easy access to each of the components and manageability.
-class TTQ : public Game
+class TTQ : public MonoBehaviour
 {
 public:
 	// TTQ state
@@ -64,14 +64,11 @@ public:
 	// Constructor/Destructor
 	~TTQ();
 	// Initialize game state (load all shaders/textures/levels)
-	void Init();
+	void Start();
 	// GameLoop
 	void ProcessInput(GLfloat dt);
 	void Update(GLfloat dt);
-	virtual void SetKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode) override;
-	virtual void SetCursorCallback(GLFWwindow* window, double xpos, double ypos) override;
-	virtual void SetScrollCallback(GLFWwindow* window, double xoffset, double yoffset) override;
-	void Render();
+	virtual void OnKeyCallback(int key, int scancode, int action, int mode) override;
 	void Quit();
 	void DoCollisions();
 	// Reset
@@ -80,6 +77,8 @@ public:
 	// Powerups
 	void SpawnPowerUps(GameObject &block);
 	void UpdatePowerUps(GLfloat dt);
+	int windowWidth = 0;
+	int windowHeight = 0;
 };
 
 #endif
