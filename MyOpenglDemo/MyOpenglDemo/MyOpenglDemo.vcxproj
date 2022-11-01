@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\glm-0.9.8.5\glm;..\..\glad\include;..\..\glfw-3.3\include;..\..\assimp-3.1.1_no_test_models\assimp-3.1.1\include;..\..\glew-2.1.0-win32\glew-2.1.0\include;..\..\soil-master\inc\SOIL;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\include;..\..\freetype-2.10.4\include;$(IncludePath)</IncludePath>
+    <IncludePath>OpenGL;..\..\glm-0.9.8.5\glm;..\..\glad\include;..\..\glfw-3.3\include;..\..\assimp-3.1.1_no_test_models\assimp-3.1.1\include;..\..\glew-2.1.0-win32\glew-2.1.0\include;..\..\soil-master\inc\SOIL;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\include;..\..\freetype-2.10.4\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\build\src\Debug;..\..\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;..\..\soil-master\build\Debug;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\lib\Win32-visualStudio;..\..\freetype-2.10.4\build\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -148,57 +148,63 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game\TTQ.cpp" />
+    <ClCompile Include="Game1\Game\TTQ.cpp" />
     <ClCompile Include="OpenGL\EngineEventHandler.cpp" />
     <ClCompile Include="OpenGL\InputHelper.cpp" />
     <ClCompile Include="OpenGL\DisplayManager.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Game\BallObject.cpp" />
-    <ClCompile Include="Game\GameLevel.cpp" />
-    <ClCompile Include="Game\GameObject.cpp" />
-    <ClCompile Include="OpenGL\ParticleGenerator.cpp" />
+    <ClCompile Include="Game1\Game\BallObject.cpp" />
+    <ClCompile Include="Game1\Game\GameLevel.cpp" />
+    <ClCompile Include="Game1\Game\GameObject.cpp" />
+    <ClCompile Include="Game1\Game\ParticleGenerator.cpp" />
     <ClCompile Include="OpenGL\PostProcessor.cpp" />
     <ClCompile Include="OpenGL\ResourceManager.cpp" />
     <ClCompile Include="OpenGL\Shader.cpp" />
     <ClCompile Include="OpenGL\SpriteRenderer.cpp" />
     <ClCompile Include="OpenGL\Texture.cpp" />
     <ClCompile Include="OpenGL\TextRenderer.cpp" />
-    <ClCompile Include="stencil_testing.cpp" />
+    <ClCompile Include="Game2\stencil_testing.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game\TTQ.h" />
+    <ClInclude Include="Game1\Game\TTQ.h" />
     <ClInclude Include="OpenGL\EngineEventHandler.h" />
     <ClInclude Include="OpenGL\MonoBehaviour.h" />
     <ClInclude Include="OpenGL\InputHelper.h" />
     <ClInclude Include="OpenGL\Camera.h" />
     <ClInclude Include="OpenGL\Game.h" />
     <ClInclude Include="OpenGL\DisplayManager.h" />
-    <ClInclude Include="Game\BallObject.h" />
-    <ClInclude Include="Game\GameLevel.h" />
-    <ClInclude Include="Game\GameObject.h" />
-    <ClInclude Include="OpenGL\ParticleGenerator.h" />
+    <ClInclude Include="Game1\Game\BallObject.h" />
+    <ClInclude Include="Game1\Game\GameLevel.h" />
+    <ClInclude Include="Game1\Game\GameObject.h" />
+    <ClInclude Include="Game1\Game\ParticleGenerator.h" />
     <ClInclude Include="OpenGL\PostProcessor.h" />
-    <ClInclude Include="Game\PowerUp.h" />
+    <ClInclude Include="Game1\Game\PowerUp.h" />
     <ClInclude Include="OpenGL\ResourceManager.h" />
     <ClInclude Include="OpenGL\Shader.h" />
     <ClInclude Include="OpenGL\SpriteRenderer.h" />
     <ClInclude Include="OpenGL\Texture.h" />
     <ClInclude Include="OpenGL\TextRenderer.h" />
-    <ClInclude Include="stencil_testing.h" />
+    <ClInclude Include="Game2\stencil_testing.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="textures\awesomeface.png" />
-    <Image Include="textures\background.jpg" />
-    <Image Include="textures\block.png" />
-    <Image Include="textures\block_solid.png" />
-    <Image Include="textures\paddle.png" />
-    <Image Include="textures\particle.png" />
-    <Image Include="textures\powerup_chaos.png" />
-    <Image Include="textures\powerup_confuse.png" />
-    <Image Include="textures\powerup_increase.png" />
-    <Image Include="textures\powerup_passthrough.png" />
-    <Image Include="textures\powerup_speed.png" />
-    <Image Include="textures\powerup_sticky.png" />
+    <Image Include="Game1\textures\awesomeface.png" />
+    <Image Include="Game1\textures\background.jpg" />
+    <Image Include="Game1\textures\block.png" />
+    <Image Include="Game1\textures\block_solid.png" />
+    <Image Include="Game1\textures\paddle.png" />
+    <Image Include="Game1\textures\particle.png" />
+    <Image Include="Game1\textures\powerup_chaos.png" />
+    <Image Include="Game1\textures\powerup_confuse.png" />
+    <Image Include="Game1\textures\powerup_increase.png" />
+    <Image Include="Game1\textures\powerup_passthrough.png" />
+    <Image Include="Game1\textures\powerup_speed.png" />
+    <Image Include="Game1\textures\powerup_sticky.png" />
+    <CopyFileToFolders Include="Game2\textures\background.jpg">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/textures</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Game2\textures\block_solid.png">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/textures</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="OpenGL\dll\ikpFlac.dll">
@@ -214,31 +220,43 @@
     <CopyFileToFolders Include="OpenGL\dll\irrKlang.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
-    <None Include="levels\four.lvl" />
-    <None Include="levels\one.lvl" />
-    <None Include="levels\three.lvl" />
-    <None Include="levels\two.lvl" />
-    <None Include="shaders\particle.frag" />
-    <None Include="shaders\particle.vs" />
-    <None Include="shaders\post_processing.frag" />
-    <None Include="shaders\post_processing.vs" />
-    <None Include="shaders\sprite.frag" />
-    <None Include="shaders\sprite.vs" />
-    <None Include="shaders\stencil_single_color.fs" />
-    <None Include="shaders\stencil_testing.fs" />
-    <None Include="shaders\stencil_testing.vs" />
-    <None Include="shaders\text.frag" />
-    <None Include="shaders\text.vs" />
+    <None Include="Game1\levels\four.lvl" />
+    <None Include="Game1\levels\one.lvl" />
+    <None Include="Game1\levels\three.lvl" />
+    <None Include="Game1\levels\two.lvl" />
+    <None Include="Game1\shaders\particle.frag" />
+    <None Include="Game1\shaders\particle.vs" />
+    <None Include="Game1\shaders\post_processing.frag" />
+    <None Include="Game1\shaders\post_processing.vs" />
+    <None Include="Game1\shaders\sprite.frag" />
+    <None Include="Game1\shaders\sprite.vs" />
+    <None Include="Game1\shaders\stencil_single_color.fs" />
+    <None Include="Game1\shaders\stencil_testing.fs" />
+    <None Include="Game1\shaders\stencil_testing.vs" />
+    <None Include="Game1\shaders\text.frag" />
+    <None Include="Game1\shaders\text.vs" />
+    <CopyFileToFolders Include="Game2\shaders\color.frag">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/shaders</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Game2\shaders\texture.frag">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/shaders</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Game2\shaders\stencil.vert">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/shaders</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="audio\bleep.mp3" />
-    <Media Include="audio\bleep.wav" />
-    <Media Include="audio\breakout.mp3" />
-    <Media Include="audio\powerup.wav" />
-    <Media Include="audio\solid.wav" />
+    <Media Include="Game1\audio\bleep.mp3" />
+    <Media Include="Game1\audio\bleep.wav" />
+    <Media Include="Game1\audio\breakout.mp3" />
+    <Media Include="Game1\audio\powerup.wav" />
+    <Media Include="Game1\audio\solid.wav" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="fonts\OCRAEXT.TTF" />
+    <Font Include="Game1\fonts\OCRAEXT.TTF" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

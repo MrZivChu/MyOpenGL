@@ -25,6 +25,11 @@ void DisplayManager::CreateWindow(int width, int height, const char* title)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glfwSwapInterval(0);//VSync is off, 1 if VSync on
+
+	glfwSetFramebufferSizeCallback(window, [](GLFWwindow* window, int width, int height) {
+		glViewport(0, 0, width, height);
+	});
+
 }
 
 GLFWwindow* DisplayManager::GetWindow()
