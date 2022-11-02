@@ -17,8 +17,8 @@ private:
 	int windowWidth = 0;
 	int windowHeight = 0;
 
-	virtual void Start() override;
-	virtual void Update(GLfloat deltaTime) override;
-	virtual void Quit() override;
+	void Start();
+	void Update(float deltaTime);
+	void Quit();
 };
 

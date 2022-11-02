@@ -85,7 +85,7 @@ void stencil_testing::Start()
 	glfwGetWindowSize(window, &windowWidth, &windowHeight);
 }
 
-void stencil_testing::Update(GLfloat deltaTime)
+void stencil_testing::Update(float deltaTime)
 {
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glStencilMask(0xFF);//只有启用模板缓冲写入，才能清除模板缓冲内容

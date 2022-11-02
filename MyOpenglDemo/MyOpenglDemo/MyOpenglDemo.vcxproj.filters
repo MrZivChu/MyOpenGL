@@ -63,6 +63,9 @@
     <ClCompile Include="Game1\Game\ParticleGenerator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Game3\PixelModify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenGL\ResourceManager.h">
@@ -122,6 +125,9 @@
     <ClInclude Include="Game1\Game\ParticleGenerator.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Game3\PixelModify.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Game1\textures\awesomeface.png">
@@ -160,6 +166,9 @@
     <Image Include="Game1\textures\powerup_sticky.png">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="Game3\textures\1.jpeg">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Game1\levels\four.lvl" />
@@ -177,6 +186,8 @@
     <None Include="Game1\shaders\stencil_testing.vs" />
     <None Include="Game1\shaders\text.frag" />
     <None Include="Game1\shaders\text.vs" />
+    <None Include="Game3\shaders\frag.frag" />
+    <None Include="Game3\shaders\vert.vert" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Game1\audio\bleep.mp3">

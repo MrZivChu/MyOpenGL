@@ -164,6 +164,7 @@
     <ClCompile Include="OpenGL\Texture.cpp" />
     <ClCompile Include="OpenGL\TextRenderer.cpp" />
     <ClCompile Include="Game2\stencil_testing.cpp" />
+    <ClCompile Include="Game3\PixelModify.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game1\Game\TTQ.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="OpenGL\Texture.h" />
     <ClInclude Include="OpenGL\TextRenderer.h" />
     <ClInclude Include="Game2\stencil_testing.h" />
+    <ClInclude Include="Game3\PixelModify.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Game1\textures\awesomeface.png" />
@@ -205,6 +207,7 @@
     <CopyFileToFolders Include="Game2\textures\block_solid.png">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/textures</DestinationFolders>
     </CopyFileToFolders>
+    <Image Include="Game3\textures\1.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="OpenGL\dll\ikpFlac.dll">
@@ -247,6 +250,8 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/shaders</DestinationFolders>
     </CopyFileToFolders>
+    <None Include="Game3\shaders\frag.frag" />
+    <None Include="Game3\shaders\vert.vert" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Game1\audio\bleep.mp3" />
