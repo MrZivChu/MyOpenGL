@@ -169,6 +169,9 @@
     <Image Include="Game3\textures\1.jpeg">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="Game3\textures\2.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Game1\levels\four.lvl" />

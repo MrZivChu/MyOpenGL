@@ -1,5 +1,6 @@
 #pragma once
 #define GLEW_STATIC
+#include <memory>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 

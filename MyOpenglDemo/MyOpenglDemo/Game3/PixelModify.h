@@ -9,7 +9,8 @@ public:
 	unsigned int  planeVBO;
 	unsigned int  planeEBO;
 	Shader shaderTexture;
-	Texture2D textureImg;
+	Texture2D textureImg1;
+	Texture2D textureImg2;
 
 	void Start();
 	void Update(float deltaTime);
