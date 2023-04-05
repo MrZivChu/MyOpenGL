@@ -51,7 +51,7 @@ void PixelModify::Update(float deltaTime)
 
 	glActiveTexture(GL_TEXTURE6);
 	textureImg1.Bind();
-
+	
 	glActiveTexture(GL_TEXTURE9);
 	textureImg2.Bind();
 

@@ -15,6 +15,8 @@ void DisplayManager::CreateWindow(int width, int height, const char* title)
 
 	glfwMakeContextCurrent(window);
 
+	//有些显卡的驱动程序不能正确给出所支持的扩展信息，导致GLEW不能正确获取某些函数的入口地址
+	//解决：先glewExperimental = GL_TRUE 再 glewInit()
 	glewExperimental = GL_TRUE;
 	glewInit();
 	//调用一次来捕获glewInit()错误，所有其他错误现在都来自我们的应用程序。
