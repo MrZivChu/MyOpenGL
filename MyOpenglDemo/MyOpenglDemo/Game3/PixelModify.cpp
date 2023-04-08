@@ -23,6 +23,8 @@ void PixelModify::Start()
 	//					4、解绑 Bind(0)
 	// 使用的时候：
 	//					绑定 Bind(id)  [Shader除外，使用：glUseProgram(id)]
+	// 销毁对象：
+	//					删除 Delete(id)
 
 	glGenVertexArrays(1, &planeVAO);
 	glBindVertexArray(planeVAO);
@@ -49,6 +51,11 @@ void PixelModify::Start()
 	shaderTexture.SetInteger("texture0", 6, true);
 	shaderTexture.SetInteger("texture1", 9, true);
 
+	// 不能 Disable ！！！
+	// glDisableVertexAttribArray(7);
+	// glDisableVertexAttribArray(12);
+	
+	// VAO必须是第一个bind(0) ！！！
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
