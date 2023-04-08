@@ -5,6 +5,7 @@ void PixelModify::Start()
 	shaderTexture = ResourceManager::LoadShader("Game3/shaders/vert.vert", "Game3/shaders/frag.frag", nullptr, "shaderTexture");
 	textureImg1 = ResourceManager::LoadTexture("Game3/textures/1.jpeg", false, "floorTexture1");
 	textureImg2 = ResourceManager::LoadTexture("Game3/textures/2.png", true, "floorTexture2");
+
 	float vertices[] = {
 		 0.5f,  0.5f, 0.0f,   1.0f, 1.0f, // top right
 		 0.5f, -0.5f, 0.0f,   1.0f, 0.0f, // bottom right
@@ -40,7 +41,7 @@ void PixelModify::Start()
 	glEnableVertexAttribArray(12);
 
 	glGenBuffers(1, &planeEBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, planeEBO);	
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, planeEBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	shaderTexture.SetFloat("width", textureImg1.GetWidth(), true);
@@ -51,14 +52,14 @@ void PixelModify::Start()
 	shaderTexture.SetInteger("texture0", 6, true);
 	shaderTexture.SetInteger("texture1", 9, true);
 
-	// 不能 Disable ！！！
-	// glDisableVertexAttribArray(7);
-	// glDisableVertexAttribArray(12);
-	
+
 	// VAO必须是第一个bind(0) ！！！
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+	glDisableVertexAttribArray(7);
+	glDisableVertexAttribArray(12);
 }
 
 void PixelModify::Update(float deltaTime)
@@ -73,7 +74,7 @@ void PixelModify::Update(float deltaTime)
 	//超过一张图片的话，需要根据索引进行设置，设置方式如下：
 	//绑定第一张图片
 	glActiveTexture(GL_TEXTURE6);
-	textureImg1.Bind();	
+	textureImg1.Bind();
 	//绑定第二张图片
 	glActiveTexture(GL_TEXTURE9);
 	textureImg2.Bind();
