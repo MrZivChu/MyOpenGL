@@ -15,22 +15,29 @@ void PixelModify::Start()
 		0, 1, 3, // first triangle
 		1, 2, 3  // second triangle
 	};
+
+	// 创建对象一般四步骤：
+	//					1、生成 Gen  
+	//					2、绑定 Bind(id)  
+	//					3、设置属性
+	//					4、解绑 Bind(0)
+
 	glGenVertexArrays(1, &planeVAO);
-	glGenBuffers(1, &planeVBO);
-	glGenBuffers(1, &planeEBO);
 	glBindVertexArray(planeVAO);
 
+	glGenBuffers(1, &planeVBO);
 	glBindBuffer(GL_ARRAY_BUFFER, planeVBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, planeEBO);	
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	glVertexAttribPointer(7, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(7);
 
 	glVertexAttribPointer(12, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(12);
+
+	glGenBuffers(1, &planeEBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, planeEBO);	
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	shaderTexture.SetFloat("width", textureImg1.GetWidth(), true);
 	shaderTexture.SetFloat("height", textureImg1.GetHeight(), true);
