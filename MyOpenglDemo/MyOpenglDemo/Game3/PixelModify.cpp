@@ -35,10 +35,14 @@ void PixelModify::Start()
 	shaderTexture.SetFloat("width", textureImg1.GetWidth(), true);
 	shaderTexture.SetFloat("height", textureImg1.GetHeight(), true);
 
+	//如果只有一张图片的话，就没必要获取图片索引了
+	//如果超过一张图片的话，那么需要获取图片的索引了，获取方式如下：
 	shaderTexture.SetInteger("texture0", 6, true);
 	shaderTexture.SetInteger("texture1", 9, true);
 
 	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 void PixelModify::Update(float deltaTime)
@@ -49,9 +53,12 @@ void PixelModify::Update(float deltaTime)
 	shaderTexture.Use();
 	glBindVertexArray(planeVAO);
 
+	//如果只有一张图片的话，那么直接 textureImg.Bind() 即可，也没必要glActiveTexture了
+	//超过一张图片的话，需要根据索引进行设置，设置方式如下：
+	//绑定第一张图片
 	glActiveTexture(GL_TEXTURE6);
-	textureImg1.Bind();
-	
+	textureImg1.Bind();	
+	//绑定第二张图片
 	glActiveTexture(GL_TEXTURE9);
 	textureImg2.Bind();
 
