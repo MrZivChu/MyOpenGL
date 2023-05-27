@@ -191,6 +191,7 @@
     <None Include="Game1\shaders\text.vs" />
     <None Include="Game3\shaders\frag.frag" />
     <None Include="Game3\shaders\vert.vert" />
+    <None Include="Game3\shaders\fragOnePic.frag" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Game1\audio\bleep.mp3">

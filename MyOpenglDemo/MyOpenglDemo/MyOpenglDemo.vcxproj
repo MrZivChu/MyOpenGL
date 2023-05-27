@@ -252,6 +252,7 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/shaders</DestinationFolders>
     </CopyFileToFolders>
     <None Include="Game3\shaders\frag.frag" />
+    <None Include="Game3\shaders\fragOnePic.frag" />
     <None Include="Game3\shaders\vert.vert" />
   </ItemGroup>
   <ItemGroup>
