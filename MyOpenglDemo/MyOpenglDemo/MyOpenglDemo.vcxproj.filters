@@ -179,19 +179,21 @@
     <None Include="Game1\levels\three.lvl" />
     <None Include="Game1\levels\two.lvl" />
     <None Include="Game1\shaders\particle.frag" />
-    <None Include="Game1\shaders\particle.vs" />
+    <None Include="Game1\shaders\particle.vert" />
     <None Include="Game1\shaders\post_processing.frag" />
-    <None Include="Game1\shaders\post_processing.vs" />
+    <None Include="Game1\shaders\post_processing.vert" />
     <None Include="Game1\shaders\sprite.frag" />
-    <None Include="Game1\shaders\sprite.vs" />
+    <None Include="Game1\shaders\sprite.vert" />
     <None Include="Game1\shaders\stencil_single_color.fs" />
     <None Include="Game1\shaders\stencil_testing.fs" />
-    <None Include="Game1\shaders\stencil_testing.vs" />
+    <None Include="Game1\shaders\stencil_testing.vert" />
     <None Include="Game1\shaders\text.frag" />
-    <None Include="Game1\shaders\text.vs" />
+    <None Include="Game1\shaders\text.vert" />
     <None Include="Game3\shaders\frag.frag" />
     <None Include="Game3\shaders\vert.vert" />
     <None Include="Game3\shaders\fragOnePic.frag" />
+    <None Include="OpenGL\shaders\text.frag" />
+    <None Include="OpenGL\shaders\text.vert" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Game1\audio\bleep.mp3">

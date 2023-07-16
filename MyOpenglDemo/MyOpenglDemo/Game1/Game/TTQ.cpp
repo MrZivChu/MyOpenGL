@@ -50,9 +50,9 @@ void TTQ::Start()
 {
 	glfwGetWindowSize(window, &windowWidth, &windowHeight);
 	// Load shaders
-	ResourceManager::LoadShader("Game1/shaders/sprite.vs", "Game1/shaders/sprite.frag", nullptr, "sprite");
-	ResourceManager::LoadShader("Game1/shaders/particle.vs", "Game1/shaders/particle.frag", nullptr, "particle");
-	ResourceManager::LoadShader("Game1/shaders/post_processing.vs", "Game1/shaders/post_processing.frag", nullptr, "postprocessing");
+	ResourceManager::LoadShader("Game1/shaders/sprite.vert", "Game1/shaders/sprite.frag", nullptr, "sprite");
+	ResourceManager::LoadShader("Game1/shaders/particle.vert", "Game1/shaders/particle.frag", nullptr, "particle");
+	ResourceManager::LoadShader("Game1/shaders/post_processing.vert", "Game1/shaders/post_processing.frag", nullptr, "postprocessing");
 	// Configure shaders
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(this->windowWidth), static_cast<GLfloat>(this->windowHeight), 0.0f, -1.0f, 1.0f);
 	ResourceManager::GetShader("sprite").Use().SetInteger("sprite", 0);
@@ -179,7 +179,6 @@ void TTQ::Update(GLfloat dt)
 		Text->RenderText("You WON!!!", 320.0f, this->windowHeight / 2 - 20.0f, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 		Text->RenderText("Press ENTER to retry or ESC to quit", 130.0f, this->windowHeight / 2, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
 	}
-	glfwSwapBuffers(window);
 }
 
 

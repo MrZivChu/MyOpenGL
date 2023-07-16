@@ -64,6 +64,16 @@ Shader ResourceManager::loadShaderFromFile(const GLchar *vShaderFile, const GLch
 		// Open files
 		std::ifstream vertexShaderFile(vShaderFile);
 		std::ifstream fragmentShaderFile(fShaderFile);
+		if (!vertexShaderFile.good())
+		{
+			std::cout << "vShaderFile is not exist£º" << vShaderFile << std::endl;
+			return {};
+		}
+		if (!fragmentShaderFile.good())
+		{
+			std::cout << "fShaderFile is not exist£º" << fShaderFile << std::endl;
+			return {};
+		}
 		std::stringstream vShaderStream, fShaderStream;
 		// Read file's buffer contents into streams
 		vShaderStream << vertexShaderFile.rdbuf();
@@ -99,6 +109,12 @@ Shader ResourceManager::loadShaderFromFile(const GLchar *vShaderFile, const GLch
 
 Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alpha)
 {
+	std::ifstream textureFile(file);
+	if (!textureFile.good())
+	{
+		std::cout << "textureFile is not exist£º" << file << std::endl;
+		return {};
+	}
 	// Create Texture object
 	Texture2D texture;
 	if (alpha)

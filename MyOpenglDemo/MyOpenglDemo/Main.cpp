@@ -12,7 +12,7 @@
 int main(int argc, char *argv[])
 {
 	Game::Init(800, 800, "Demo");
-	std::shared_ptr<MonoBehaviour> game = std::make_unique<PixelModify>();
+	std::shared_ptr<MonoBehaviour> game = std::make_unique<TTQ>();
 	Game::Run();
 	return 0;
 }
