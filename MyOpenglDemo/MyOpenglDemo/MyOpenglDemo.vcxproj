@@ -71,8 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>OpenGL;..\..\glm-0.9.8.5\glm;..\..\glad\include;..\..\glfw-3.3\include;..\..\assimp-3.1.1_no_test_models\assimp-3.1.1\include;..\..\glew-2.1.0-win32\glew-2.1.0\include;..\..\soil-master\inc\SOIL;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\include;..\..\freetype-2.10.4\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\build\src\Debug;..\..\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32;..\..\soil-master\build\Debug;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\lib\Win32-visualStudio;..\..\freetype-2.10.4\build\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -92,11 +92,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>OpenGL;..\..\glm-0.9.8.5\glm;..\..\glad\include;..\..\glfw-3.3\include;..\..\assimp-3.1.1_no_test_models\assimp-3.1.1\include;..\..\glew-2.1.0-win32\glew-2.1.0\include;..\..\soil-master\inc\SOIL;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\include;..\..\freetype-2.10.4\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glew32s.lib;soil.lib;irrKlang.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\build\src\Debug\glfw3.lib;..\..\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32\glew32s.lib;..\..\soil-master\build\Debug\soil.lib;..\..\irrKlang-32bit-1.5.0\irrKlang-1.5.0\lib\Win32-visualStudio\irrKlang.lib;..\..\freetype-2.10.4\build\Debug\freetyped.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -207,8 +208,12 @@
     <CopyFileToFolders Include="Game2\textures\block_solid.png">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/textures</DestinationFolders>
     </CopyFileToFolders>
-    <Image Include="Game3\textures\1.jpeg" />
-    <Image Include="Game3\textures\2.png" />
+    <CopyFileToFolders Include="Game3\textures\1.jpeg">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game3/textures</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Game3\textures\2.png">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game3/textures</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="OpenGL\dll\ikpFlac.dll">
@@ -251,21 +256,45 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game2/shaders</DestinationFolders>
     </CopyFileToFolders>
-    <None Include="Game3\shaders\frag.frag" />
+    <CopyFileToFolders Include="Game3\shaders\frag.frag">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game3/shaders</DestinationFolders>
+    </CopyFileToFolders>
     <None Include="Game3\shaders\fragOnePic.frag" />
-    <None Include="Game3\shaders\vert.vert" />
+    <CopyFileToFolders Include="Game3\shaders\vert.vert">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game3/shaders</DestinationFolders>
+    </CopyFileToFolders>
     <None Include="OpenGL\shaders\text.frag" />
     <None Include="OpenGL\shaders\text.vert" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Game1\audio\bleep.mp3" />
-    <Media Include="Game1\audio\bleep.wav" />
-    <Media Include="Game1\audio\breakout.mp3" />
-    <Media Include="Game1\audio\powerup.wav" />
-    <Media Include="Game1\audio\solid.wav" />
+    <CopyFileToFolders Include="Game1\audio\bleep.mp3">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game1/audio</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Game1\audio\bleep.wav">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game1/audio</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Game1\audio\breakout.mp3">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game1/audio</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Game1\audio\powerup.wav">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game1/audio</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Game1\audio\solid.wav">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game1/audio</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Game1\fonts\OCRAEXT.TTF" />
+    <CopyFileToFolders Include="Game1\fonts\OCRAEXT.TTF">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders)/Game1/fonts</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
